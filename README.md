@@ -1,4 +1,4 @@
-Para executar 
+Para executar no cmd:
 cd "path/da/pasta"
 
 Após isso:

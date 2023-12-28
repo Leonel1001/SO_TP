@@ -1,3 +1,5 @@
+package src.java.app;
+
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

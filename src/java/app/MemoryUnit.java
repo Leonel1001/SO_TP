@@ -1,3 +1,5 @@
+package src.java.app;
+
 public class MemoryUnit {
     private int data;
 

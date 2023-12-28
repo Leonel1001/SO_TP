@@ -1,3 +1,5 @@
+package src.java.app;
+
 public class Cpu extends Thread {
     private MemoryUnit memoryUnit;
     private Kernel kernel;

@@ -1,3 +1,5 @@
+package src.java.app;
+
 public class Kernel {
     private MemoryUnit mem;
     private Cpu cpu;
@@ -7,15 +9,15 @@ public class Kernel {
 
     public Kernel() {
         mem = new MemoryUnit();
-        cpu = new Cpu(mem, this);  // Passando a instância atual de Kernel
+        cpu = new Cpu(mem, this);
         middleware = new Middleware(cpu);
     }
 
     public void start() {
         System.out.println("Iniciando o kernel...");
 
+        middleware.start(); // Inicie o Middleware primeiro
         cpu.start();
-        middleware.start();
 
         // Lógica para manter e controlar tarefas
 

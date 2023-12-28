@@ -1,15 +1,21 @@
+package src.java.app;
+
 public class Main {
     public static void main(String[] args) {
-        // Criação e início do Kernel
         Kernel kernel = new Kernel();
         kernel.start();
 
-        // Comunicação com o Middleware (exemplo)
-        kernel.communicateWithMiddleware("Mensagem da aplicação para o Middleware");
+        // Aguarde algum tempo para garantir que o Middleware esteja pronto
+        try {
+            Thread.sleep(1000); // 1 segundo
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Lógica adicional, se necessário
+        // Inicie a Estação após o Middleware e o Kernel estarem prontos
+        Station.exibir();
 
-        // Encerramento do Kernel
+        // Encerre o Kernel quando a Estação for fechada
         kernel.stop();
     }
 }

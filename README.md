@@ -1,10 +1,1 @@
-Para executar no cmd:
-cd "path/da/pasta"
-
-Após isso:
-javac *.java
-
-Por fim:
-java Main
-
-Nota: Em alguns PC's pode ser preciso o Main.java!
+De momento estou a executar como aplicação, estou a usar o Intellij IDEA, basta clicar em run no ficheiro Main

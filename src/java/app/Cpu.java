@@ -1,11 +1,9 @@
 package src.java.app;
 
 public class Cpu extends Thread {
-    private MemoryUnit memoryUnit;
     private Kernel kernel;
 
-    public Cpu(MemoryUnit memoryUnit, Kernel kernel) {
-        this.memoryUnit = memoryUnit;
+    public Cpu(Kernel kernel) {
         this.kernel = kernel;
     }
 
@@ -14,10 +12,7 @@ public class Cpu extends Thread {
         while (isRunning()) {
             // Lógica da CPU
 
-            int inputData = memoryUnit.readData();
-            int processedData = processData(inputData);
-            memoryUnit.writeData(processedData);
-
+            // Processamento fictício
             System.out.println("CPU processou uma tarefa.");
 
             try {
@@ -30,12 +25,11 @@ public class Cpu extends Thread {
         System.out.println("CPU encerrada.");
     }
 
-    private int processData(int inputData) {
-        // Lógica para processar os dados na CPU
-        return inputData; // Exemplo: retorno do mesmo valor por enquanto
-    }
-
     private boolean isRunning() {
         return kernel != null && kernel.isRunning() && !Thread.interrupted();
+    }
+
+    public void processarTarefa(String mensagem) {
+        System.out.println("CPU processou a tarefa: " + mensagem);
     }
 }

@@ -9,14 +9,14 @@ public class Kernel {
 
     public Kernel() {
         mem = new MemoryUnit();
-        cpu = new Cpu(mem, this);
+        cpu = new Cpu(this);
         middleware = new Middleware(cpu);
     }
 
     public void start() {
         System.out.println("Iniciando o kernel...");
 
-        middleware.start(); // Inicie o Middleware primeiro
+        middleware.start();
         cpu.start();
 
         // Lógica para manter e controlar tarefas

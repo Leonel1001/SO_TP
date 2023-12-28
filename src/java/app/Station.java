@@ -1,77 +1,61 @@
 package src.java.app;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
 import java.net.Socket;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-
-public class Station {
+public class Station extends Thread {
+    private UserInterface userInterface;
     private ObjectOutputStream outputStream;
-    private JTextField textField;
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> exibir());
+    public Station(UserInterface userInterface) {
+        this.userInterface = userInterface;
     }
 
-    public static void exibir() {
-        JFrame frame = new JFrame("Estação");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(300, 200);
+    @Override
+    public void run() {
+        try (ServerSocket serverSocket = new ServerSocket(12345)) {
+            System.out.println("Estação aguardando conexão...");
 
-        JPanel panel = new JPanel();
-        frame.getContentPane().add(panel, BorderLayout.CENTER);
+            // Aguarda a conexão com o Middleware
+            Socket socket = serverSocket.accept();
+            System.out.println("Middleware conectado à Estação.");
 
-        JButton button = new JButton("Enviar Mensagem");
-        panel.add(button);
-
-        Station estacao = new Station();
-
-        // Adicione uma caixa de texto para a mensagem
-        estacao.textField = new JTextField(20);
-        panel.add(estacao.textField);
-
-        // Inicie a conexão antes de exibir o frame
-        if (estacao.iniciarConexao()) {
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    String mensagem = estacao.textField.getText();
-                    estacao.enviarMensagem(mensagem);
-                }
-            });
-        } else {
-            // Trate o erro de conexão aqui
-            System.err.println("Erro ao iniciar a conexão.");
-        }
-
-        frame.setVisible(true);
-    }
-
-    public boolean iniciarConexao() {
-        try {
-            Socket socket = new Socket("localhost", 12345);
+            // Streams de entrada e saída para comunicação com o Middleware
             outputStream = new ObjectOutputStream(socket.getOutputStream());
-            return true;
-        } catch (IOException e) {
+            ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
+
+            // Lógica para comunicação com o Middleware
+            while (true) {
+                // Aguarda receber uma mensagem do Middleware
+                String mensagemRecebida = (String) inputStream.readObject();
+                userInterface.exibirMensagemRecebida(mensagemRecebida);
+
+                // Responde ao Middleware (apenas para simulação)
+                String resposta = "Recebida";
+                enviarResposta(resposta);
+            }
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            return false;
         }
     }
 
-    public void enviarMensagem(String mensagem) {
+    private void enviarResposta(String resposta) {
         try {
-            outputStream.writeObject(mensagem);
+            outputStream.writeObject(resposta);
             outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void exibir(UserInterface userInterface) {
+        SwingUtilities.invokeLater(() -> {
+            Station station = new Station(userInterface);
+            station.start();
+        });
     }
 }

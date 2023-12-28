@@ -8,7 +8,6 @@ import java.net.Socket;
 
 public class Middleware extends Thread {
     private Cpu cpu;
-    private volatile boolean isRunning = true;
 
     public Middleware(Cpu cpu) {
         this.cpu = cpu;
@@ -28,7 +27,7 @@ public class Middleware extends Thread {
             ObjectInputStream inputStream = new ObjectInputStream(socket.getInputStream());
 
             // Lógica para comunicação com a estação
-            while (isRunning) {
+            while (true) {
                 // Aguarda receber uma mensagem da estação
                 String mensagemRecebida = (String) inputStream.readObject();
                 System.out.println("Estação: " + mensagemRecebida);
@@ -37,13 +36,12 @@ public class Middleware extends Thread {
                 String resposta = "OK";
                 outputStream.writeObject(resposta);
                 outputStream.flush();
+
+                // Encaminhe a mensagem para a CPU
+                cpu.processarTarefa(mensagemRecebida);
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-    }
-
-    public void stopMiddleware() {
-        isRunning = false;
     }
 }

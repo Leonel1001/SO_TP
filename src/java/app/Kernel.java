@@ -1,3 +1,4 @@
+package src.java.app;
 public class Kernel {
     private final MemoryUnit mem;
     private final Cpu cpu;

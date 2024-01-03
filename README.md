@@ -1,1 +1,12 @@
-De momento estou a executar como aplicação, estou a usar o Intellij IDEA, basta clicar em run no ficheiro Main
+Requisitos:
+
+Ter logs;
+Verificar se temos todos os aspetos abordados nas aulas;
+Exportar logs;
+Gerar gráficos;
+Utilizadores;
+Configuração do programa poderá ser efetuada por intermédio de um ficheiro de configuração (com dados de
+teste, simulações, utilizadores, etc.). ---- CSV ?
+
+Para arrancar o programar é no SatteliteInterface - java SatteliteInterface.java
+

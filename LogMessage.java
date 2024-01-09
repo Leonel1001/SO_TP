@@ -1,4 +1,6 @@
-public class LogMessage {
+import java.io.Serializable;
+
+public class LogMessage implements Serializable {
     private final String message;
     private final Middleware source;
 
@@ -14,5 +16,4 @@ public class LogMessage {
     public Middleware getSource() {
         return source;
     }
-
 }

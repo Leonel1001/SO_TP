@@ -1,11 +1,10 @@
-package src.java.app;
-
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class Middleware extends Thread {
-    private final BlockingQueue<String> messageQueue;
-    private final BlockingQueue<String> responseQueue;
+    private final BlockingQueue<LogMessage> messageQueue;
+    private final BlockingQueue<LogMessage> responseQueue;
+    private final Object responseLock = new Object();
 
     public Middleware() {
         this.messageQueue = new LinkedBlockingQueue<>();
@@ -17,15 +16,16 @@ public class Middleware extends Thread {
         while (!Thread.interrupted()) {
             try {
                 // Aguarda até que uma mensagem seja recebida
-                String receivedMessage = messageQueue.take();
-                System.out.println("Middleware recebeu a mensagem: " + receivedMessage);
+                LogMessage receivedMessage = messageQueue.take();
+                System.out.println("Middleware recebeu a mensagem: " + receivedMessage.getMessage());
 
                 // Lógica de processamento da mensagem
                 // ...
 
-                // Envia uma resposta
-                String response = "Mensagem recebida com sucesso!";
-                responseQueue.put(response);
+                // Envia uma resposta de maneira sincronizada
+                synchronized (responseLock) {
+                    responseQueue.put(receivedMessage); // Envia a própria mensagem como resposta
+                }
             } catch (InterruptedException e) {
                 // Lidar com a interrupção
                 Thread.currentThread().interrupt();
@@ -33,17 +33,19 @@ public class Middleware extends Thread {
         }
     }
 
-    public void sendMessage(String message) {
+    public void sendMessage(LogMessage logMessage) {
         // Lógica para enviar mensagens ao Middleware
         try {
-            messageQueue.put(message);
+            messageQueue.put(logMessage);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
     }
 
-    public String checkForResponse() {
-        // Verifica se há resposta na fila e retorna
-        return responseQueue.poll();
-    }   
+    public LogMessage checkForResponse() {
+        // Verifica se há resposta na fila e retorna de maneira sincronizada
+        synchronized (responseLock) {
+            return responseQueue.poll();
+        }
+    }
 }

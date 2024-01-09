@@ -1,8 +1,8 @@
-package src.java.app;
+
 public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
-    private  Middleware middleware;
+    private Middleware middleware;
 
     public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
         this.kernel = kernel;
@@ -19,14 +19,15 @@ public class Cpu extends Thread {
             // ...
 
             // Verifica se há resposta do Middleware
-            String response = middleware.checkForResponse();
+            LogMessage response = middleware.checkForResponse();
             if (response != null) {
-                System.out.println("CPU recebeu resposta do Middleware: " + response);
+                System.out.println("CPU recebeu resposta do Middleware: " + response.getMessage());
             }
         }
     }
 
-    public void setMiddleware(Middleware middleware2) {
+    // Método para configurar o Middleware
+    public void setMiddleware(Middleware middleware) {
+        this.middleware = middleware;
     }
- 
 }

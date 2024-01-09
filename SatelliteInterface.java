@@ -1,15 +1,15 @@
-package src.java.app;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SatelliteInterface extends JFrame {
-
     private final Kernel kernel;
+    private final LogWindow logWindow;
 
-    public SatelliteInterface() {
+    public SatelliteInterface(LogWindow logWindow) {
         this.kernel = new Kernel();
+        this.logWindow = logWindow;
         initComponents();
     }
 
@@ -19,43 +19,50 @@ public class SatelliteInterface extends JFrame {
         setSize(400, 200);
         setLocationRelativeTo(null);
 
-        // Criar componentes
         JTextField messageField = new JTextField();
         JTextArea responseArea = new JTextArea();
         JButton sendButton = new JButton("Enviar");
+        JButton openLogButton = new JButton("Ver Logs");
 
-        // Configurar layout
         setLayout(new BorderLayout());
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout());
         inputPanel.add(messageField, BorderLayout.CENTER);
         inputPanel.add(sendButton, BorderLayout.EAST);
 
-        // Adicionar componentes ao frame
         add(inputPanel, BorderLayout.NORTH);
         add(new JScrollPane(responseArea), BorderLayout.CENTER);
+        add(openLogButton, BorderLayout.SOUTH);
 
-        // Configurar a referência do Middleware na CPU
         Cpu cpu = kernel.getCpu();
         Middleware middleware = kernel.getMiddleware();
         cpu.setMiddleware(middleware);
 
-        // Ação do botão de envio
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String message = messageField.getText();
-                middleware.sendMessage(message);
-                messageField.setText(""); // Limpar o campo de mensagem
+                LogMessage logMessage = new LogMessage(message, middleware);
+                middleware.sendMessage(logMessage);
+                messageField.setText("");
             }
         });
 
-        // Thread para receber e imprimir respostas do Middleware
+        openLogButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                logWindow.setVisible(true);
+            }
+        });
+
         Thread responseThread = new Thread(() -> {
             while (kernel.isRunning()) {
-                String response = middleware.checkForResponse();
+                LogMessage response = middleware.checkForResponse();
                 if (response != null) {
-                    responseArea.append("Interface recebeu resposta do Middleware: " + response + "\n");
+                    SwingUtilities.invokeLater(() -> {
+                        responseArea.append("Mensagem: " + response.getMessage() + "\n");
+                        logWindow.addLogMessage(response);
+                    });
                 }
             }
         });
@@ -64,9 +71,15 @@ public class SatelliteInterface extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            SatelliteInterface interfaceFrame = new SatelliteInterface();
-            interfaceFrame.setVisible(true);
-            interfaceFrame.kernel.start(); // Iniciar o kernel após exibir a interface
+            try {
+                LogWindow logWindow = new LogWindow();
+                SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow);
+                interfaceFrame.setVisible(true);
+                interfaceFrame.kernel.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle the exception appropriately
+            }
         });
     }
 }

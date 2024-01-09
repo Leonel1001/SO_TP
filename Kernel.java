@@ -1,4 +1,4 @@
-package src.java.app;
+// Kernel.java
 public class Kernel {
     private final MemoryUnit mem;
     private final Cpu cpu;
@@ -8,7 +8,7 @@ public class Kernel {
 
     public Kernel() {
         mem = new MemoryUnit();
-        middleware = new Middleware(); 
+        middleware = new Middleware();
         cpu = new Cpu(this, mem, middleware);
     }
 
@@ -50,7 +50,7 @@ public class Kernel {
     }
 
     public void communicateWithMiddleware(String message) {
-        middleware.sendMessage(message);
+        middleware.sendMessage(new LogMessage(message, middleware));
     }
 
     // Método para obter referência para Middleware

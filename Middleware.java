@@ -22,7 +22,7 @@ public class Middleware extends Thread {
                 // ...
 
                 // Envia uma resposta de maneira sincronizada
-                responseQueue.offer(receivedMessage); // Envia a própria mensagem como resposta
+                responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
 
                 // Notifica o Cpu que há uma resposta disponível
                 synchronized (responseQueue) {
@@ -56,4 +56,12 @@ public class Middleware extends Thread {
         // Verifica se há resposta na fila e retorna de maneira sincronizada
         return responseQueue.poll();
     }
+
+    // Método para enviar resposta à CPU
+    public void sendResponse(LogMessage response) {
+        // Adiciona a resposta à fila de respostas
+        responseQueue.offer(response);
+    }
+
+    
 }

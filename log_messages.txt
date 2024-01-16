@@ -5,38 +5,13 @@ dia 26/129
 123
 Francisco as logs estão a ser salvas no .txt
 123213
-qwe
-qwe
-sadf
-123456789
-123
-teste1245
-123
-123213123123123123
-1234
-1234
-admin: 123
-Mensagem de 'admin': Olá
-Mensagem de admin: Teste
-Mensagem de admin: Leonel
-Mensagem de Leonel: Olá
-Mensagem de Leonel: 123
-Mensagem de Leonel: 213
-Mensagem de Leonel: 213
-Mensagem de Leonel: 
-Mensagem de Leonel: 
-Mensagem de Leonel: 123
-Mensagem de Leonel: Olá jjhs
-Mensagem de Leonel: Olá bro
-Mensagem de Leonel: 
-Mensagem de Leonel: 2134safg
-Mensagem de Leonel: Olá
-Mensagem de Leonel: Olá
-Mensagem de Leonel: FODASE ZE
-Mensagem de Leonel: Olá bro
-Mensagem de Leonel: Looo
-Mensagem de Fodase: ok asd
-Mensagem de Leonel: Olmmm
-Mensagem de Leonel: vvbc
-Mensagem de Francisco: Boas
-Mensagem de Rei: Eu sou o rei
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Teste
+Message from  Francisco: Fixe

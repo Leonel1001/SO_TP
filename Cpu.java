@@ -3,6 +3,7 @@ public class Cpu extends Thread {
     private final MemoryUnit mem;
     private Middleware middleware;
     private String lastResponse = ""; 
+    
 
     public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
         this.kernel = kernel;
@@ -30,6 +31,7 @@ public class Cpu extends Thread {
 
                         // Update the lastResponse to the current response message
                         lastResponse = response.getMessage();
+                    
                     }
                 }
             }

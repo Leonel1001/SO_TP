@@ -14,7 +14,7 @@ public class Cpu extends Thread {
         while (kernel.isRunning()) {
             // Lógica de gestão, escalonamento e execução de tarefas
             synchronized (mem) {
-                int data = mem.readData();
+                // int data = mem.readData();
                 // Processamento em tempo real
                 // ...
 

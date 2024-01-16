@@ -4,7 +4,6 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
     private final BlockingQueue<LogMessage> responseQueue;
-    private final Object responseLock = new Object();
 
     public Middleware() {
         this.messageQueue = new LinkedBlockingQueue<>();
@@ -23,12 +22,17 @@ public class Middleware extends Thread {
                 // ...
 
                 // Envia uma resposta de maneira sincronizada
-                synchronized (responseLock) {
-                    responseQueue.put(receivedMessage); // Envia a própria mensagem como resposta
+                responseQueue.offer(receivedMessage); // Envia a própria mensagem como resposta
+
+                // Notifica o Cpu que há uma resposta disponível
+                synchronized (responseQueue) {
+                    responseQueue.notify();
                 }
+
             } catch (InterruptedException e) {
                 // Lidar com a interrupção
                 Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
         }
     }
@@ -36,16 +40,20 @@ public class Middleware extends Thread {
     public void sendMessage(LogMessage logMessage) {
         // Lógica para enviar mensagens ao Middleware
         try {
-            messageQueue.put(logMessage);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
+            messageQueue.offer(logMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Pode fazer mais coisas aqui, se necessário
         }
+    }
+
+    // Método público para acessar responseQueue
+    public BlockingQueue<LogMessage> getResponseQueue() {
+        return responseQueue;
     }
 
     public LogMessage checkForResponse() {
         // Verifica se há resposta na fila e retorna de maneira sincronizada
-        synchronized (responseLock) {
-            return responseQueue.poll();
-        }
+        return responseQueue.poll();
     }
 }

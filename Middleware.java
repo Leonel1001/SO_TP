@@ -1,78 +1,82 @@
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.Semaphore;
 
 public class Middleware extends Thread {
-    private final BlockingQueue<LogMessage> messageQueue;
-    private final BlockingQueue<LogMessage> responseQueue;
-    private final BlockingQueue<LogMessage> userResponsesQueue;
+    private String receivedMessage;
+    private final Cpu cpu;
+    private final Lock lock;
+    private final Semaphore middlewareSemaphore;
 
-    public Middleware() {
-        this.messageQueue = new LinkedBlockingQueue<>();
-        this.responseQueue = new LinkedBlockingQueue<>();
-        this.userResponsesQueue = new LinkedBlockingQueue<>();
+    public Middleware(Cpu cpu, Semaphore middlewareSemaphore) {
+        this.cpu = cpu;
+        this.lock = new ReentrantLock();
+        this.middlewareSemaphore = middlewareSemaphore;
     }
 
-    @Override
+    public void sendMessageToMiddleware(String message) {
+        System.out.println("Processing message in Middleware: " + message);
+        cpu.sendMessageToCPU(message);
+    }
+
+   public synchronized String receiveMessageFromInterface() throws InterruptedException {
+    lock.lock();
+    try {
+        while (receivedMessage == null) {
+            System.out.println("Waiting for message from Interface...");
+            wait();
+        }
+        String message = receivedMessage;
+        receivedMessage = null;
+        System.out.println("Received message from Interface: " + message);
+        return message;
+    } finally {
+        lock.unlock();
+    }
+}
+
+public synchronized void sendManualMessageFromInterface(String message) {
+    lock.lock();
+    try {
+        receivedMessage = message;
+        System.out.println("Sent manual message to Interface: " + message);
+        notifyAll(); 
+    } finally {
+        lock.unlock();
+    }
+}
+
+
+    public void sendManualCpuResponse(String response) {
+        cpu.sendMessageToCPU(response);
+    }
+
+    public String receiveCpuResponse() {
+        return cpu.getLastSentResponse();
+    }
+
     public void run() {
-        new Thread(() -> {
-            while (!Thread.interrupted()) {
-                try {
-                    LogMessage receivedMessage = messageQueue.take();
-                    System.out.println("Middleware recebeu a mensagem: " + receivedMessage.getMessage());
-
-                    // Lógica de processamento da mensagem
-                    // ...
-
-                    // Envia uma resposta de maneira sincronizada
-                    responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
-
-                    // Notifica o Cpu que há uma resposta disponível
-                    synchronized (responseQueue) {
-                        responseQueue.notify();
-                    }
-
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    e.printStackTrace();
-                }
+        while (!Thread.interrupted()) {
+            try {
+                getMessageFromInterface();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                e.printStackTrace();
             }
-        }).start();
-
-    }
-
-
-    public void sendMessage(LogMessage logMessage) {
-        // Lógica para enviar mensagens ao Middleware
-        try {
-            messageQueue.offer(logMessage);
-        } catch (Exception e) {
-            e.printStackTrace();
-            // Pode fazer mais coisas aqui, se necessário
         }
     }
 
-    // Método público para acessar responseQueue
-    public BlockingQueue<LogMessage> getResponseQueue() {
-        return responseQueue;
+    private String getMessageFromInterface() throws InterruptedException {
+        lock.lock();
+        try {
+            while (receivedMessage == null) {
+                wait();
+            }
+            return receivedMessage;
+        } finally {
+            lock.unlock();
+        }
     }
 
-    public LogMessage checkForResponse() {
-        // Verifica se há resposta na fila e retorna de maneira sincronizada
-        return responseQueue.poll();
-    }
-
-    // Método para enviar resposta à CPU
-    public void sendResponse(LogMessage response) {
-        // Adiciona a resposta à fila de respostas
-        responseQueue.offer(response);
-    }
-
-    public void sendUserResponse(LogMessage response) {
-        userResponsesQueue.offer(response);
-    }
-
-    public BlockingQueue<LogMessage> getMessageQueue() {
-        return messageQueue;
-    }
-
+    
 }

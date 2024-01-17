@@ -1,0 +1,22 @@
+Interface Message: Message from Francisco: Teste
+Interface Message: Olá, o satélite recebeu
+CPU Sent Response: Olá, o satélite recebeu
+Interface Message: Olá, o satélite recebeu
+Interface Message: Olá, o satélite recebeu
+Interface Message: Message from Francisco: Teste
+Interface Message: Olá, o satélite recebeu
+CPU Sent Response: Olá, o satélite recebeu
+Interface Message: Olá, o satélite recebeu
+Interface Message: Olá, o satélite recebeu
+Interface Message: Message from Francisco: Teste
+Interface Message: Message from Interface
+Interface Message: Message from Interface
+CPU Sent Response: Olá, o satélite recebeu
+Interface Message: Message from Interface
+Interface Message: Message from Interface
+Interface Message: Message from Interface
+[2024-01-17T21:22:04.621155] Interface Message: Message from Interface
+[2024-01-17T21:22:04.623150300] CPU Response: 
+[2024-01-17T21:22:07.624309600] Interface Message: Message from Interface
+[2024-01-17T21:22:07.624309600] CPU Response: Olá, o satélite recebeu
+[2024-01-17T21:47:12.320687800] Interface Message: Message from Francisco: dsfaadsf

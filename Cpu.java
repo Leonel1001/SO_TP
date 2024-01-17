@@ -1,57 +1,80 @@
+import java.util.concurrent.Semaphore;
+
 public class Cpu extends Thread {
     private final Kernel kernel;
-    private final MemoryUnit mem;
+    private MemoryUnit mem;
     private Middleware middleware;
-    private String lastResponse = ""; 
-    
+    private String lastResponse = "";
+    private final Semaphore semaphore;
 
-    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
+    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware, Semaphore semaphore) {
         this.kernel = kernel;
         this.mem = mem;
         this.middleware = middleware;
+        this.semaphore = semaphore;
     }
-
     @Override
-    public void run() {
-        while (kernel.isRunning()) {
-            // Lógica de gestão, escalonamento e execução de tarefas
-            synchronized (mem) {
-                // int data = mem.readData();
-                // Processamento em tempo real
-                // ...
+public void run() {
+    while (kernel.isRunning()) {
+        try {
+            // Verifica se há resposta do Middleware
+            String receivedMessage = middleware.receiveMessageFromInterface();
 
-                // Verifica se há resposta do Middleware
-                synchronized (middleware) {
-                    LogMessage response = middleware.checkForResponse();
-                    if (response != null && !response.getMessage().equals(lastResponse)) {
-                        System.out.println(response.getMessage());
+            if (receivedMessage != null) {
+                System.out.println("Received from Interface: " + receivedMessage);
 
-                        // Enviar resposta à mensagem recebida
-                        sendResponse("Mensagem Recebida no Satelite!");
+                // Armazenar a mensagem enviada no objeto LogMessage
+                semaphore.acquire();
+                lastResponse = "Olá, o satélite recebeu";
+                semaphore.release();
 
-                        // Update the lastResponse to the current response message
-                        lastResponse = response.getMessage();
+                // Enviar resposta à mensagem recebida
+                middleware.sendMessageToMiddleware(lastResponse);
+                System.out.println("Sent response to Middleware: " + lastResponse);
 
-                    }
-                }
+                // Processar a mensagem recebida
+                processMessage(receivedMessage);
+
+                // Agora, se desejar, você pode enviar uma resposta específica para a Interface
+                String interfaceResponse = "Mensagem recebida e processada com sucesso!";
+                middleware.sendManualCpuResponse(interfaceResponse);
+                System.out.println("Sent manual response to Interface: " + interfaceResponse);
             }
+
+            // Processamento em tempo real
+            // ...
+
+        } catch (InterruptedException e) {
+            // Tratar a exceção de interrupção, se necessário
+            e.printStackTrace();
         }
     }
+}
 
-    // Método para configurar o Middleware
+    
+    public String getLastSentResponse() {
+        return lastResponse;
+    }
+
     public void setMiddleware(Middleware middleware) {
-        // Sincroniza o acesso ao middleware ao configurá-lo
         synchronized (this) {
             this.middleware = middleware;
         }
     }
 
-    public void sendResponse(String responseMessage) {
-        LogMessage response = new LogMessage(responseMessage, this);
+    public String getLastResponse() {
+        return lastResponse;
+    }
 
-        // Synchronize access to the middleware when sending the response
-        synchronized (middleware) {
-            middleware.sendResponse(response);
-        }
+    public void setMemoryUnit(MemoryUnit mem) {
+        this.mem = mem;
+    }
+
+    public void sendMessageToCPU(String message) {
+        processMessage(message);
+    }
+
+    void processMessage(String message) {
+        mem.sendMessageToMemoryUnit(lastResponse);
     }
 }

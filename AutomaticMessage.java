@@ -1,16 +1,11 @@
 public class AutomaticMessage {
 
-    public static void main(String[] args) {
+    // Inicializador estático para iniciar automaticamente
+    static {
         Kernel kernel = new Kernel();
-        MemoryUnit mem = new MemoryUnit();
-        Middleware middleware = new Middleware();
-        
+        kernel.start();
 
-        Cpu cpu = new Cpu(kernel, mem, middleware);
-
-        // Iniciar o Middleware e a CPU
-        middleware.start();
-        cpu.start();
+        Cpu cpu = kernel.getCpu();
 
         // Enviar mensagens automaticamente em intervalos regulares
         Runnable automaticMessageSender = () -> {
@@ -18,12 +13,11 @@ public class AutomaticMessage {
                 try {
                     Thread.sleep(2000); // Aguardar 2 segundos (intervalo arbitrário)
 
-                    // Criar uma mensagem automaticamente
+                    // Criar uma mensagem automática
                     String automaticMessage = "Mensagem automática gerada em " + System.currentTimeMillis();
-                    LogMessage logMessage = new LogMessage(automaticMessage, null);
 
-                    // Enviar a mensagem para o Middleware
-                    middleware.sendMessage(logMessage);
+                    // Enviar a mensagem para o CPU usando o método do CPU
+                    cpu.sendMessageToCPU(automaticMessage);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();

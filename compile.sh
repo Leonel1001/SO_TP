@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Concede permissões de execução ao script para uso futuro
-chmod +x "$0"
-
 # Diretório de saída para os arquivos .class
 output_directory="SatelliteClass"
 
@@ -14,4 +11,4 @@ javac -d "$output_directory" *.java
 
 # Execução da classe SatelliteInterface
 java -cp "$output_directory" SatelliteInterface
-
+-

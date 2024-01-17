@@ -15,6 +15,7 @@ public class LogMessage {
         return source;
     }
 
+
     public void setMessage(String message) {
         this.message = message;
     }

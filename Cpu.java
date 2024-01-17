@@ -2,6 +2,8 @@ public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
     private Middleware middleware;
+    private String lastResponse = ""; 
+    
 
     public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
         this.kernel = kernel;
@@ -21,8 +23,15 @@ public class Cpu extends Thread {
                 // Verifica se há resposta do Middleware
                 synchronized (middleware) {
                     LogMessage response = middleware.checkForResponse();
-                    if (response != null) {
-                        System.out.println("CPU recebeu resposta do Middleware: " + response.getMessage());
+                    if (response != null && !response.getMessage().equals(lastResponse)) {
+                        System.out.println(response.getMessage());
+
+                        // Enviar resposta à mensagem recebida
+                        sendResponse("Mensagem Recebida no Satelite!");
+
+                        // Update the lastResponse to the current response message
+                        lastResponse = response.getMessage();
+                    
                     }
                 }
             }
@@ -34,6 +43,15 @@ public class Cpu extends Thread {
         // Sincroniza o acesso ao middleware ao configurá-lo
         synchronized (this) {
             this.middleware = middleware;
+        }
+    }
+
+    public void sendResponse(String responseMessage) {
+        LogMessage response = new LogMessage(responseMessage, this);
+
+        // Synchronize access to the middleware when sending the response
+        synchronized (middleware) {
+            middleware.sendResponse(response);
         }
     }
 }

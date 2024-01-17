@@ -6,7 +6,8 @@ import java.util.List;
 
 public class LogWindow extends JFrame {
     private JTextArea logTextArea;
-    private List<LogMessage> logMessages;
+    List<LogMessage> logMessages;
+    
 
     public LogWindow() {
         setTitle("Logs");
@@ -25,10 +26,14 @@ public class LogWindow extends JFrame {
         updateLogTextArea();
     }
 
+    public List<LogMessage> getLogMessages() {
+        return logMessages;
+    }
+
     public void addLogMessage(LogMessage logMessage) {
         logMessages.add(logMessage);
         updateLogTextArea();
-        saveLogMessages(); // Salva as mensagens após adicionar uma nova
+        saveLogMessages();
     }
 
     private void updateLogTextArea() {

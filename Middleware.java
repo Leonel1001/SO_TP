@@ -1,41 +1,49 @@
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+
 public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
     private final BlockingQueue<LogMessage> responseQueue;
+    private final BlockingQueue<LogMessage> userResponsesQueue;
 
     public Middleware() {
         this.messageQueue = new LinkedBlockingQueue<>();
         this.responseQueue = new LinkedBlockingQueue<>();
+        this.userResponsesQueue = new LinkedBlockingQueue<>();
     }
 
     @Override
     public void run() {
-        while (!Thread.interrupted()) {
-            try {
-                // Aguarda até que uma mensagem seja recebida
-                LogMessage receivedMessage = messageQueue.take();
-                System.out.println("Middleware recebeu a mensagem: " + receivedMessage.getMessage());
+        new Thread(() -> {
+            while (!Thread.interrupted()) {
+                try {
+                    LogMessage receivedMessage = messageQueue.take();
+                    System.out.println("Middleware recebeu a mensagem: " + receivedMessage.getMessage());
 
-                // Lógica de processamento da mensagem
-                // ...
+                    // Lógica de processamento da mensagem
+                    // ...
 
-                // Envia uma resposta de maneira sincronizada
-                responseQueue.offer(receivedMessage); // Envia a própria mensagem como resposta
+                    // Envia uma resposta de maneira sincronizada
+                    responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
 
-                // Notifica o Cpu que há uma resposta disponível
-                synchronized (responseQueue) {
-                    responseQueue.notify();
+                    // Notifica o Cpu que há uma resposta disponível
+                    synchronized (responseQueue) {
+                        responseQueue.notify();
+                    }
+
+
+
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                    e.printStackTrace();
                 }
-
-            } catch (InterruptedException e) {
-                // Lidar com a interrupção
-                Thread.currentThread().interrupt();
-                e.printStackTrace();
             }
-        }
+        }).start();
+
+
     }
+
 
     public void sendMessage(LogMessage logMessage) {
         // Lógica para enviar mensagens ao Middleware
@@ -56,4 +64,19 @@ public class Middleware extends Thread {
         // Verifica se há resposta na fila e retorna de maneira sincronizada
         return responseQueue.poll();
     }
+
+    // Método para enviar resposta à CPU
+    public void sendResponse(LogMessage response) {
+        // Adiciona a resposta à fila de respostas
+        responseQueue.offer(response);
+    }
+
+    public void sendUserResponse(LogMessage response) {
+        userResponsesQueue.offer(response);
+    }
+
+    public BlockingQueue<LogMessage> getMessageQueue() {
+        return messageQueue;
+    }
+
 }

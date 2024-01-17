@@ -37,11 +37,7 @@ public class Cpu extends Thread {
         while (kernel.isRunning()) {
             // Lógica de gestão, escalonamento e execução de tarefas
             synchronized (mem) {
-                // int data = mem.readData();
-                // Processamento em tempo real
-                // ...
-
-                // Verifica se há resposta do Middleware
+                
                 synchronized (middleware) {
                     LogMessage response = middleware.checkForResponse();
                     if (response != null && !response.getMessage().equals(lastResponse)) {

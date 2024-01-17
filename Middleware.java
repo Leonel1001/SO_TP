@@ -12,7 +12,6 @@ public class Middleware extends Thread {
         this.userResponsesQueue = new LinkedBlockingQueue<>();
     }
 
-    @Override
     public void run() {
         new Thread(() -> {
             while (!Thread.interrupted()) {
@@ -20,14 +19,12 @@ public class Middleware extends Thread {
                     LogMessage receivedMessage = messageQueue.take();
                     System.out.println("Middleware recebeu a mensagem: " + receivedMessage.getMessage());
 
-                    // Lógica de processamento da mensagem
-                    // ...
-
-                    // Envia uma resposta de maneira sincronizada
                     synchronized (responseQueue) {
                         responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
                         responseQueue.notify();
                     }
+
+                    
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     e.printStackTrace();
@@ -60,7 +57,6 @@ public class Middleware extends Thread {
         return responseQueue;
     }
 
-    // Método para enviar resposta à CPU
     public void sendResponse(LogMessage response) {
         // Adiciona a resposta à fila de respostas
         responseQueue.offer(response);

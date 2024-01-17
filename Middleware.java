@@ -1,7 +1,6 @@
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import javax.swing.SwingUtilities;
-import javax.swing.JOptionPane;
+
 
 public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
@@ -33,14 +32,7 @@ public class Middleware extends Thread {
                         responseQueue.notify();
                     }
 
-                    // Exibir a mensagem recebida em uma janela de diálogo
-                    SwingUtilities.invokeLater(() -> {
-                        JOptionPane.showMessageDialog(
-                                null,
-                                "Mensagem Recebida no Satelite\n" + receivedMessage.getMessage(),
-                                "Mensagem Recebida",
-                                JOptionPane.INFORMATION_MESSAGE);
-                    });
+
 
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -49,24 +41,7 @@ public class Middleware extends Thread {
             }
         }).start();
 
-        // Lógica de processamento da userResponsesQueue
-        new Thread(() -> {
-            while (!Thread.interrupted()) {
-                try {
-                    LogMessage userResponse = userResponsesQueue.take();
 
-                    // Exibir a mensagem recebida em uma janela de diálogo
-                    SwingUtilities.invokeLater(() -> {
-                        JOptionPane.showMessageDialog(null, "Mensagem Recebida de " + userResponse.getMessage(),
-                                "Mensagem Recebida", JOptionPane.INFORMATION_MESSAGE);
-                    });
-
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 
 

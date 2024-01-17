@@ -10,7 +10,7 @@ public class SatelliteInterface extends JFrame {
     private final LogWindow logWindow;
     private final UserManager userManager;
     private String loggedInUser;
-
+    private JButton toggleAutoSendButton;
     private volatile boolean autoSendMessages;
     private Thread autoSendMessageThread;
 
@@ -26,43 +26,55 @@ public class SatelliteInterface extends JFrame {
     private void initComponents() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Satellite Interface");
-        setSize(400, 200);
+        setSize(600, 400);
         setLocationRelativeTo(null);
 
         showInitialPage();
     }
 
     private void showInitialPage() {
-        JPanel panel = new JPanel(new GridLayout(4, 2));
-        JTextField usernameField = new JTextField();
-        JPasswordField passwordField = new JPasswordField();
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel titleLabel = new JLabel("Satellite Interface");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        panel.add(titleLabel, gbc);
+
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+        gbc.anchor = GridBagConstraints.EAST;
+        panel.add(new JLabel("Username:"), gbc);
+
+        gbc.gridx++;
+        JTextField usernameField = new JTextField(20);
+        panel.add(usernameField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        panel.add(new JLabel("Password:"), gbc);
+
+        gbc.gridx++;
+        JPasswordField passwordField = new JPasswordField(20);
+        panel.add(passwordField, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        gbc.anchor = GridBagConstraints.CENTER;
         JButton loginButton = new JButton("Login");
         JButton registerButton = new JButton("Register");
-       
+        panel.add(loginButton, gbc);
 
-        panel.add(new JLabel("Username:"));
-        panel.add(usernameField);
-        panel.add(new JLabel("Password:"));
-        panel.add(passwordField);
-        panel.add(loginButton);
-        panel.add(registerButton);
-      
+        gbc.gridx++;
+        panel.add(registerButton, gbc);
 
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                performLogin(usernameField.getText(), new String(passwordField.getPassword()));
-            }
-        });
+        loginButton
+                .addActionListener(e -> performLogin(usernameField.getText(), new String(passwordField.getPassword())));
 
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                showRegisterUserDialog();
-            }
-        });
-
-        
+        registerButton.addActionListener(e -> showRegisterUserDialog());
 
         add(panel);
     }
@@ -72,10 +84,15 @@ public class SatelliteInterface extends JFrame {
 
         if (autoSendMessages) {
             startAutoSendMessageThread();
+            toggleAutoSendButton.setBackground(Color.green);
         } else {
             stopAutoSendMessageThread();
+            toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
         }
+
+        toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
     }
+
 
     private void startAutoSendMessageThread() {
         autoSendMessageThread = new Thread(() -> {
@@ -115,13 +132,14 @@ public class SatelliteInterface extends JFrame {
         }
     }
 
+
     private void showMainInterface() {
         JTextField messageField = new JTextField();
         JTextArea responseArea = new JTextArea();
         JButton sendButton = new JButton("Send");
         JButton openLogButton = new JButton("Logs");
-        JButton toggleAutoSendButton = new JButton("Start/Stop Auto Send");
-
+        toggleAutoSendButton = new JButton("Start/Stop Auto Send");
+        toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout());
         inputPanel.add(messageField, BorderLayout.CENTER);
@@ -170,6 +188,9 @@ public class SatelliteInterface extends JFrame {
                 toggleAutoSendMessage();
             }
         });
+
+        toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
+
     }
 
     private void showRegisterUserDialog() {
@@ -203,18 +224,25 @@ public class SatelliteInterface extends JFrame {
             e.printStackTrace();
         }
     }
-
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            try {
-                LogWindow logWindow = new LogWindow();
-                UserManager userManager = new UserManager();
-                SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager);
-                interfaceFrame.setVisible(true);
-                interfaceFrame.kernel.start();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        try {
+            // Configura o Look and Feel Nimbus
+            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    LogWindow logWindow = new LogWindow();
+                    UserManager userManager = new UserManager();
+                    SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager);
+                    interfaceFrame.setVisible(true);
+                    interfaceFrame.kernel.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException
+                | IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
 }

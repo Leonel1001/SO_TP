@@ -1,7 +1,8 @@
+// Kernel.java
 public class Kernel {
     private final MemoryUnit mem;
-    private final Middleware middleware;
     private final Cpu cpu;
+    private final Middleware middleware;
 
     private volatile boolean isRunning = true;
 
@@ -10,7 +11,6 @@ public class Kernel {
         mem = new MemoryUnit();
         middleware = new Middleware();
         cpu = new Cpu(this, mem, middleware);
-        middleware.setCpu(cpu); // Configuração do Cpu no Middleware
     }
 
     // Iniciar o kernel, inicializando também as threads essenciais

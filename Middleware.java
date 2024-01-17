@@ -5,16 +5,11 @@ public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
     private final BlockingQueue<LogMessage> responseQueue;
     private final BlockingQueue<LogMessage> userResponsesQueue;
-    private Cpu cpu;
 
     public Middleware() {
         this.messageQueue = new LinkedBlockingQueue<>();
         this.responseQueue = new LinkedBlockingQueue<>();
         this.userResponsesQueue = new LinkedBlockingQueue<>();
-    }
-
-    public void setCpu(Cpu cpu) {
-        this.cpu = cpu;
     }
 
     @Override
@@ -28,11 +23,8 @@ public class Middleware extends Thread {
                     // Lógica de processamento da mensagem
                     // ...
 
-                    // Envia a mensagem do usuário para o Cpu
-                    String userMessage = receivedMessage.getMessage();
-                    if (cpu != null) {
-                        cpu.receiveUserMessage(userMessage);
-                    }
+                    // Envia uma resposta de maneira sincronizada
+                    responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
 
                     // Notifica o Cpu que há uma resposta disponível
                     synchronized (responseQueue) {
@@ -45,9 +37,8 @@ public class Middleware extends Thread {
                 }
             }
         }).start();
+
     }
-
-
 
 
     public void sendMessage(LogMessage logMessage) {

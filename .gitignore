@@ -1,9 +1,0 @@
-# Ignorar arquivos de compilação Java
-*.class
-
-# Ignorar arquivos de bytecode Java
-*.jar
-
-# Ignorar diretório de compilação (por exemplo, "bin" ou "target")
-/bin/
-/target/

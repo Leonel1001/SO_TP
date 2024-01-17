@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
@@ -24,18 +25,25 @@ public class Cpu extends Thread {
                 synchronized (middleware) {
                     LogMessage response = middleware.checkForResponse();
                     if (response != null && !response.getMessage().equals(lastResponse)) {
-                        System.out.println(response.getMessage());
+                        String message = response.getMessage();
+
+                        // Exibir mensagem em uma janela de notificação
+                        showNotification(message);
 
                         // Enviar resposta à mensagem recebida
                         sendResponse("Mensagem Recebida no Satelite!");
 
                         // Update the lastResponse to the current response message
-                        lastResponse = response.getMessage();
-                    
+                        lastResponse = message;
                     }
                 }
             }
         }
+    }
+
+    // Método para exibir mensagem em uma janela de notificação
+    private void showNotification(String message) {
+        JOptionPane.showMessageDialog(null, message, "Notificação", JOptionPane.INFORMATION_MESSAGE);
     }
 
     // Método para configurar o Middleware
@@ -54,4 +62,12 @@ public class Cpu extends Thread {
             middleware.sendResponse(response);
         }
     }
+
+    // Método para receber mensagem do usuário
+    public void receiveUserMessage(String userMessage) {
+        // Faça o processamento necessário com a mensagem do usuário
+        // Por exemplo, exibir em uma janela de notificação
+        showNotification("Mensagem do Utilizador recebida: " + userMessage);
+    }
+
 }

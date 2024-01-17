@@ -1,16 +1,20 @@
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
 public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
     private final BlockingQueue<LogMessage> responseQueue;
     private final BlockingQueue<LogMessage> userResponsesQueue;
+    private Cpu cpu;
 
     public Middleware() {
         this.messageQueue = new LinkedBlockingQueue<>();
         this.responseQueue = new LinkedBlockingQueue<>();
         this.userResponsesQueue = new LinkedBlockingQueue<>();
+    }
+
+    public void setCpu(Cpu cpu) {
+        this.cpu = cpu;
     }
 
     @Override
@@ -24,15 +28,16 @@ public class Middleware extends Thread {
                     // Lógica de processamento da mensagem
                     // ...
 
-                    // Envia uma resposta de maneira sincronizada
-                    responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
+                    // Envia a mensagem do usuário para o Cpu
+                    String userMessage = receivedMessage.getMessage();
+                    if (cpu != null) {
+                        cpu.receiveUserMessage(userMessage);
+                    }
 
                     // Notifica o Cpu que há uma resposta disponível
                     synchronized (responseQueue) {
                         responseQueue.notify();
                     }
-
-
 
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -40,9 +45,9 @@ public class Middleware extends Thread {
                 }
             }
         }).start();
-
-
     }
+
+
 
 
     public void sendMessage(LogMessage logMessage) {

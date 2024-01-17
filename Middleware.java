@@ -1,7 +1,6 @@
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
 public class Middleware extends Thread {
     private final BlockingQueue<LogMessage> messageQueue;
     private final BlockingQueue<LogMessage> responseQueue;
@@ -25,25 +24,26 @@ public class Middleware extends Thread {
                     // ...
 
                     // Envia uma resposta de maneira sincronizada
-                    responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
-
-                    // Notifica o Cpu que há uma resposta disponível
                     synchronized (responseQueue) {
+                        responseQueue.offer(new LogMessage("Resposta do Middleware para CPU", this));
                         responseQueue.notify();
                     }
-
-
-
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                     e.printStackTrace();
                 }
             }
         }).start();
-
-
     }
 
+    // ... (outros métodos existentes)
+
+    public LogMessage checkForResponse() {
+        // Verifica se há resposta na fila de maneira sincronizada
+        synchronized (responseQueue) {
+            return responseQueue.poll();
+        }
+    }
 
     public void sendMessage(LogMessage logMessage) {
         // Lógica para enviar mensagens ao Middleware
@@ -60,11 +60,6 @@ public class Middleware extends Thread {
         return responseQueue;
     }
 
-    public LogMessage checkForResponse() {
-        // Verifica se há resposta na fila e retorna de maneira sincronizada
-        return responseQueue.poll();
-    }
-
     // Método para enviar resposta à CPU
     public void sendResponse(LogMessage response) {
         // Adiciona a resposta à fila de respostas
@@ -78,5 +73,4 @@ public class Middleware extends Thread {
     public BlockingQueue<LogMessage> getMessageQueue() {
         return messageQueue;
     }
-
 }

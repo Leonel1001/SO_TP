@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class SatelliteInterface extends JFrame {
     private final Kernel kernel;
-    private final LogWindow logWindow;
+   
     private final UserManager userManager;
     private String loggedInUser;
     private JButton toggleAutoSendButton;
@@ -17,7 +17,7 @@ public class SatelliteInterface extends JFrame {
 
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
-        this.logWindow = logWindow;
+    
         this.userManager = userManager;
         this.loggedInUser = null;
         this.autoSendMessages = false;
@@ -118,7 +118,7 @@ public class SatelliteInterface extends JFrame {
         satelliteTextArea.setText("");
         satelliteTextArea.append("Mensagens Enviadas para o Satélite:\n");
 
-        for (LogMessage message : logWindow.getLogMessages()) {
+        for (LogMessage message : MemoryUnit.getLogMessages()) {
             satelliteTextArea.append(message.getMessage() + "\n");
         }
     }
@@ -146,7 +146,7 @@ public class SatelliteInterface extends JFrame {
                             + System.currentTimeMillis();
                     LogMessage logMessage = new LogMessage(automaticMessage, kernel.getMiddleware());
                     kernel.getMiddleware().sendMessage(logMessage);
-                    logWindow.addLogMessage(logMessage);
+                    MemoryUnit.addLogMessage(logMessage);
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -212,7 +212,7 @@ public class SatelliteInterface extends JFrame {
                     kernel.getMiddleware().sendMessage(logMessage);
                     messageField.setText("");
                     responseArea.append(message + "\n");
-                    logWindow.addLogMessage(logMessage);
+                    MemoryUnit.addLogMessage(logMessage);
                 } else {
                     JOptionPane.showMessageDialog(null, "To send a message you need to be logged in.");
                 }
@@ -269,6 +269,7 @@ public class SatelliteInterface extends JFrame {
 
             SwingUtilities.invokeLater(() -> {
                 try {
+                
                     LogWindow logWindow = new LogWindow();
                     UserManager userManager = new UserManager();
                     SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager);

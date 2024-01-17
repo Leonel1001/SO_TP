@@ -2,40 +2,12 @@ public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
     private Middleware middleware;
-    private String lastResponse = ""; 
-    
+    private String lastResponse = "";
 
     public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
         this.kernel = kernel;
         this.mem = mem;
         this.middleware = middleware;
-    }
-
-    @Override
-    public void run() {
-        while (kernel.isRunning()) {
-            // Lógica de gestão, escalonamento e execução de tarefas
-            synchronized (mem) {
-                // int data = mem.readData();
-                // Processamento em tempo real
-                // ...
-
-                // Verifica se há resposta do Middleware
-                synchronized (middleware) {
-                    LogMessage response = middleware.checkForResponse();
-                    if (response != null && !response.getMessage().equals(lastResponse)) {
-                        System.out.println(response.getMessage());
-
-                        // Enviar resposta à mensagem recebida
-                        sendResponse("Mensagem Recebida no Satelite!");
-
-                        // Update the lastResponse to the current response message
-                        lastResponse = response.getMessage();
-                    
-                    }
-                }
-            }
-        }
     }
 
     // Método para configurar o Middleware
@@ -53,5 +25,38 @@ public class Cpu extends Thread {
         synchronized (middleware) {
             middleware.sendResponse(response);
         }
+
+        // Adicionar a mensagem de resposta ao log
+        MemoryUnit.addLogMessage(response);
     }
+
+    
+
+    @Override
+    public void run() {
+        while (kernel.isRunning()) {
+            // Lógica de gestão, escalonamento e execução de tarefas
+            synchronized (mem) {
+                // int data = mem.readData();
+                // Processamento em tempo real
+                // ...
+
+                // Verifica se há resposta do Middleware
+                synchronized (middleware) {
+                    LogMessage response = middleware.checkForResponse();
+                    if (response != null && !response.getMessage().equals(lastResponse)) {
+                        System.out.println("Received response: " + response.getMessage());
+
+                        // Enviar resposta à mensagem recebida
+                        sendResponse("Mensagem Recebida no Satelite!");
+
+                        // Update the lastResponse to the current response message
+                        lastResponse = response.getMessage();
+                    }
+                }
+
+            }
+        }
+    }
+
 }

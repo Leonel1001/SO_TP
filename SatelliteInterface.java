@@ -14,6 +14,7 @@ public class SatelliteInterface extends JFrame {
     private volatile boolean autoSendMessages;
     private Thread autoSendMessageThread;
 
+
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
         this.logWindow = logWindow;
@@ -71,12 +72,55 @@ public class SatelliteInterface extends JFrame {
         gbc.gridx++;
         panel.add(registerButton, gbc);
 
+        JButton satelliteButton = new JButton("Satellite");
+        gbc.gridy++;
+        panel.add(satelliteButton, gbc);
+
+        satelliteButton.addActionListener(e -> showSatellitePage());
+
+        satelliteButton.addActionListener(e -> showSatellitePage());
+
         loginButton
                 .addActionListener(e -> performLogin(usernameField.getText(), new String(passwordField.getPassword())));
 
         registerButton.addActionListener(e -> showRegisterUserDialog());
 
         add(panel);
+    }
+
+    private void showSatellitePage() {
+        JFrame satelliteFrame = new JFrame("Satellite Page");
+        satelliteFrame.setSize(800, 600);
+        satelliteFrame.setLocationRelativeTo(null);
+
+        JPanel satellitePanel = new JPanel(new BorderLayout());
+
+        JTextArea satelliteTextArea = new JTextArea();
+        satelliteTextArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(satelliteTextArea);
+
+        satellitePanel.add(scrollPane, BorderLayout.CENTER);
+
+        JButton refreshButton = new JButton("Refresh");
+        satellitePanel.add(refreshButton, BorderLayout.SOUTH);
+
+        refreshButton.addActionListener(e -> refreshSatelliteText(satelliteTextArea));
+
+        // Adicione esta linha para exibir as mensagens automaticamente ao abrir a
+        // página Satellite
+        refreshSatelliteText(satelliteTextArea);
+
+        satelliteFrame.getContentPane().add(satellitePanel);
+        satelliteFrame.setVisible(true);
+    }
+
+    private void refreshSatelliteText(JTextArea satelliteTextArea) {
+        satelliteTextArea.setText("");
+        satelliteTextArea.append("Mensagens Enviadas para o Satélite:\n");
+
+        for (LogMessage message : logWindow.getLogMessages()) {
+            satelliteTextArea.append(message.getMessage() + "\n");
+        }
     }
 
     private void toggleAutoSendMessage() {
@@ -93,13 +137,13 @@ public class SatelliteInterface extends JFrame {
         toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
     }
 
-
     private void startAutoSendMessageThread() {
         autoSendMessageThread = new Thread(() -> {
             while (autoSendMessages) {
                 try {
                     Thread.sleep(2000);
-                    String automaticMessage = "Automatic message from " + loggedInUser + ": " + System.currentTimeMillis();
+                    String automaticMessage = "Automatic message from " + loggedInUser + ": "
+                            + System.currentTimeMillis();
                     LogMessage logMessage = new LogMessage(automaticMessage, kernel.getMiddleware());
                     kernel.getMiddleware().sendMessage(logMessage);
                     logWindow.addLogMessage(logMessage);
@@ -132,27 +176,27 @@ public class SatelliteInterface extends JFrame {
         }
     }
 
-
     private void showMainInterface() {
         JTextField messageField = new JTextField();
         JTextArea responseArea = new JTextArea();
         JButton sendButton = new JButton("Send");
-        JButton openLogButton = new JButton("Logs");
+
         toggleAutoSendButton = new JButton("Start/Stop Auto Send");
         toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
+        JButton satelliteButton = new JButton("Satellite"); // Adicionado aqui
+
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout());
         inputPanel.add(messageField, BorderLayout.CENTER);
         inputPanel.add(sendButton, BorderLayout.EAST);
-       
-        
 
         add(inputPanel, BorderLayout.NORTH);
         add(new JScrollPane(responseArea), BorderLayout.CENTER);
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(toggleAutoSendButton);
-        buttonPanel.add(openLogButton);
+
+        buttonPanel.add(satelliteButton); // Adicionado aqui
         add(buttonPanel, BorderLayout.SOUTH);
 
         Cpu cpu = kernel.getCpu();
@@ -175,13 +219,6 @@ public class SatelliteInterface extends JFrame {
             }
         });
 
-        openLogButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                logWindow.setVisible(true);
-            }
-        });
-
         toggleAutoSendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -190,7 +227,7 @@ public class SatelliteInterface extends JFrame {
         });
 
         toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
-
+        satelliteButton.addActionListener(e -> showSatellitePage()); // Adicionado aqui
     }
 
     private void showRegisterUserDialog() {
@@ -211,7 +248,7 @@ public class SatelliteInterface extends JFrame {
                 JOptionPane.showMessageDialog(null, "User already exists. Create a different user.");
             } else {
                 userManager.addUser(new User(username, password));
-                JOptionPane.showMessageDialog(null, "User sucessfully created");
+                JOptionPane.showMessageDialog(null, "User successfully created");
                 saveUsers();
             }
         }
@@ -224,6 +261,7 @@ public class SatelliteInterface extends JFrame {
             e.printStackTrace();
         }
     }
+
     public static void main(String[] args) {
         try {
             // Configura o Look and Feel Nimbus

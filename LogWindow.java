@@ -6,7 +6,7 @@ import java.util.List;
 
 public class LogWindow extends JFrame {
     private JTextArea logTextArea;
-    private List<LogMessage> logMessages;
+    List<LogMessage> logMessages;
     
 
     public LogWindow() {
@@ -24,6 +24,10 @@ public class LogWindow extends JFrame {
         add(scrollPane, BorderLayout.CENTER);
 
         updateLogTextArea();
+    }
+
+    public List<LogMessage> getLogMessages() {
+        return logMessages;
     }
 
     public void addLogMessage(LogMessage logMessage) {

@@ -99,5 +99,9 @@ public class Middleware extends Thread {
     public void sendUserResponse(LogMessage response) {
         userResponsesQueue.offer(response);
     }
-    
+
+    public BlockingQueue<LogMessage> getMessageQueue() {
+        return messageQueue;
+    }
+
 }

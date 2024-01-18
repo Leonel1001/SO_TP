@@ -1,9 +1,14 @@
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserManager {
-    private static final String USER_FILE = "users.dat";
+    private static final String USER_FILE = "users.json";
     private List<User> userList;
 
     public UserManager() {
@@ -11,6 +16,10 @@ public class UserManager {
     }
 
     public void addUser(User user) {
+        // Criptografar a senha antes de adicionar ao usuário
+        String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
+        user.setPassword(hashedPassword);
+
         userList.add(user);
         saveUsers();
         System.out.println("Utilizador criado com sucesso: " + user.getUsername());
@@ -31,22 +40,28 @@ public class UserManager {
 
     public boolean authenticateUser(String username, String password) {
         User user = getUserByUsername(username);
-        return user != null && user.getPassword().equals(password);
+
+        // Verificar se o usuário existe e comparar a senha fornecida com a senha
+        // criptografada armazenada
+        return user != null && BCrypt.checkpw(password, user.getPassword());
     }
 
     private void saveUsers() {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(USER_FILE))) {
-            oos.writeObject(userList);
+        try (Writer writer = new FileWriter(USER_FILE)) {
+            Gson gson = new Gson();
+            gson.toJson(userList, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    @SuppressWarnings("unchecked")
     private List<User> loadUsers() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(USER_FILE))) {
-            return (List<User>) ois.readObject();
-        } catch (IOException | ClassNotFoundException | ClassCastException e) {
+        try (Reader reader = new FileReader(USER_FILE)) {
+            Gson gson = new Gson();
+            Type userListType = new TypeToken<List<User>>() {
+            }.getType();
+            return gson.fromJson(reader, userListType);
+        } catch (IOException e) {
             return new ArrayList<>();
         }
     }

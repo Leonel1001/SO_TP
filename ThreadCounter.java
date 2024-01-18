@@ -22,12 +22,6 @@ public class ThreadCounter extends Thread {
             int totalActiveThreadCount = activeThreadCountCpu + activeThreadCountBomber + activeThreadCountAutomatic;
             this.activeThreadCount.set(totalActiveThreadCount);
 
-            // Imprime a contagem de threads
-            System.out.println("Total Active Threads: " + totalActiveThreadCount);
-            System.out.println("  CPU Threads: " + activeThreadCountCpu);
-            System.out.println("  Bomber Threads: " + activeThreadCountBomber);
-            System.out.println("  AutomaticMessage Threads: " + activeThreadCountAutomatic);
-
             try {
                 Thread.sleep(1000); // Agora dorme por 1 segundo para evitar uma iteração muito rápida
             } catch (InterruptedException e) {

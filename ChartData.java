@@ -48,7 +48,7 @@ public class ChartData extends JFrame {
         Map<String, Integer> userMessageCounts = memoryUnit.getUserMessageCounts();
 
         for (Map.Entry<String, Integer> entry : userMessageCounts.entrySet()) {
-            dataset.addValue(entry.getValue(), "Série 1", entry.getKey());
+            dataset.addValue(entry.getValue(), "nMensagens", entry.getKey());
         }
 
         return dataset;

@@ -19,9 +19,10 @@ public class SatelliteInterface extends JFrame {
     private ThreadCounter threadCounter; 
     private JLabel activeThreadLabel;
     private final Bomber bomber;
+    private Cpu cpu;
 
 
-    public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
+    public SatelliteInterface(LogWindow logWindow, UserManager userManager, Cpu cpu) {
         this.kernel = new Kernel();
         this.userManager = userManager;
         this.loggedInUser = null;
@@ -30,6 +31,7 @@ public class SatelliteInterface extends JFrame {
         this.memoryUnit = new MemoryUnit();
         this.bomber = new Bomber(null);
         this.threadCounter = new ThreadCounter(kernel.getCpu(), bomber, autoMessageThread); 
+        this.cpu = cpu;
         
         initComponents();
     }
@@ -247,11 +249,19 @@ public class SatelliteInterface extends JFrame {
                     middleware.messageManager(fullMessage);
                     messageField.setText("");
                     responseArea.append(loggedInUser + ": " + messageContent + "\n");
+        
+                    // Agora, aguarde a resposta da CPU e exiba-a em uma janela
+                    String cpuResponse = cpu.waitForCpuResponse(); // Método fictício para esperar pela resposta
+        
+                    // Exiba a resposta em uma janela
+                    JOptionPane.showMessageDialog(null, "Resposta da CPU: " + cpuResponse);
+        
                 } else {
                     JOptionPane.showMessageDialog(null, "To send a message you need to be logged in.");
                 }
             }
         });
+        
 
         toggleAutoSendButton.addActionListener(new ActionListener() {
             @Override
@@ -273,6 +283,8 @@ public class SatelliteInterface extends JFrame {
             }
         });
     }
+
+
 
     private void updateActiveThreadLabel() {
         activeThreadLabel.setText("Active Threads: " + threadCounter.getActiveThreadCount());
@@ -368,26 +380,38 @@ public class SatelliteInterface extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            // Configura o Look and Feel Nimbus
-            UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
-
-            SwingUtilities.invokeLater(() -> {
-                try {
-
-                    LogWindow logWindow = new LogWindow();
-                    UserManager userManager = new UserManager();
-                    SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager);
-                    interfaceFrame.setVisible(true);
-                    interfaceFrame.kernel.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException
-                | IllegalAccessException e) {
-            e.printStackTrace();
+    
+        public static void main(String[] args) {
+            try {
+                // Configura o Look and Feel Nimbus
+                UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
+        
+                SwingUtilities.invokeLater(() -> {
+                    try {
+                        LogWindow logWindow = new LogWindow();
+                        UserManager userManager = new UserManager();
+        
+                        // Suponha que você tenha inicializado os objetos Kernel, MemoryUnit e Middleware.
+                        Kernel kernel = new Kernel();
+                        MemoryUnit mem = new MemoryUnit();
+                        LinkedBlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
+                        Middleware middleware = new Middleware(messageQueue); // Fornecer a LinkedBlockingQueue
+        
+                        Cpu cpu = new Cpu(kernel, mem, middleware, messageQueue);
+        
+                        SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager, cpu);
+                        interfaceFrame.setVisible(true);
+                        interfaceFrame.kernel.start();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                });
+            } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException
+                    | IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
-    }
+        
+    
+    
 }

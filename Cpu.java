@@ -43,6 +43,7 @@ public class Cpu extends Thread {
             semaphore.acquire();
 
             System.out.println("CPU processando mensagem: " + message);
+            waitForCpuResponse();
             mem.saveMessage(message);
             responseMessage(message);
 
@@ -64,4 +65,10 @@ public class Cpu extends Thread {
     private synchronized void decrementActiveThreadCount() {
         activeThreadCount.decrementAndGet();
     }
+
+    String waitForCpuResponse() {
+      
+        return "Ok! Recebido!";
+    }
+    
 }

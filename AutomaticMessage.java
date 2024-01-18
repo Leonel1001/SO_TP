@@ -1,21 +1,40 @@
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class AutomaticMessage extends Thread {
     private final Middleware middleware;
+    private final AtomicInteger activeThreadCount;
+    private volatile boolean isActive;
 
-    public AutomaticMessage(Middleware middleware) {
+    public AutomaticMessage(Middleware middleware, ThreadCounter threadCounter) {
         this.middleware = middleware;
+        this.activeThreadCount = threadCounter.activeThreadCount;
+        this.isActive = true;
+    }
+
+    public void stopThread() {
+        isActive = false;
+        interrupt();
     }
 
     @Override
     public void run() {
-        while (!Thread.interrupted()) {
-            try {
+        try {
+
+            while (isActive && !Thread.interrupted()) {
                 String automaticMessage = generateAutomaticMessage();
                 middleware.messageManager(automaticMessage);
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                Thread.sleep(3000);
+                activeThreadCount.incrementAndGet();
             }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        } finally {
+            activeThreadCount.decrementAndGet();
         }
+    }
+
+    public synchronized int getActiveThreadCount() {
+        return activeThreadCount.get();
     }
 
     public static String generateAutomaticMessage() {

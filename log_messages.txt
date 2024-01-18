@@ -1,54 +1,1114 @@
-Mensagem de Leonel: 123456
-Satélite responde a Mensagem de Leonel: 123456
-Mensagem de Leonel: olá
-Satélite responde a Mensagem de Leonel: olá
-Mensagem de Leonel: ola1234
-Satélite responde a Mensagem de Leonel: ola1234
-Mensagem de Francisco: 123
-Satélite responde a Mensagem de Francisco: 123
-Mensagem de Francisco: 213
-Satélite responde a Mensagem de Francisco: 213
-Mensagem de Francisco: 567
-Satélite responde a Mensagem de Francisco: 567
-Mensagem de Francisco: 
-Satélite responde a Mensagem de Francisco: 
-Mensagem da Thread 24
-Satélite responde a Mensagem da Thread 24
-Mensagem da Thread 23
-Satélite responde a Mensagem da Thread 23
-Mensagem da Thread 26
-Satélite responde a Mensagem da Thread 26
-Mensagem da Thread 27
-Satélite responde a Mensagem da Thread 27
-Mensagem da Thread 25
-Satélite responde a Mensagem da Thread 25
-Mensagem da Thread 27
-Satélite responde a Mensagem da Thread 27
-Mensagem da Thread 26
-Satélite responde a Mensagem da Thread 26
-Mensagem da Thread 23
-Satélite responde a Mensagem da Thread 23
-Mensagem da Thread 25
-Satélite responde a Mensagem da Thread 25
-Mensagem da Thread 24
-Satélite responde a Mensagem da Thread 24
-Mensagem da Thread 27
-Satélite responde a Mensagem da Thread 27
-Mensagem da Thread 25
-Satélite responde a Mensagem da Thread 25
-Mensagem da Thread 24
-Satélite responde a Mensagem da Thread 24
-Mensagem da Thread 26
-Satélite responde a Mensagem da Thread 26
-Mensagem da Thread 23
-Satélite responde a Mensagem da Thread 23
-Mensagem de Rei: 123
-Satélite responde a Mensagem de Rei: 123
-Mensagem de Rei: 
-Satélite responde a Mensagem de Rei: 
-Mensagem de Rei: 1231245
-Satélite responde a Mensagem de Rei: 1231245
-Mensagem de Rei: asdasd
-Satélite responde a Mensagem de Rei: asdasd
-Mensagem de Rei: asdasd
-Satélite responde a Mensagem de Rei: asdasd
+Mensagem automática: 1705597752805
+Satélite responde a Mensagem automática: 1705597752805
+Mensagem automática: 1705597753819
+Satélite responde a Mensagem automática: 1705597753819
+Mensagem automática: 1705597754820
+Satélite responde a Mensagem automática: 1705597754820
+Mensagem automática: 1705597755832
+Satélite responde a Mensagem automática: 1705597755832
+Mensagem automática: 1705597756843
+Satélite responde a Mensagem automática: 1705597756843
+Mensagem automática: 1705597757849
+Satélite responde a Mensagem automática: 1705597757849
+Mensagem automática: 1705597758862
+Satélite responde a Mensagem automática: 1705597758862
+Mensagem da Thread 35
+Satélite responde a Mensagem da Thread 35
+Mensagem da Thread 38
+Satélite responde a Mensagem da Thread 38
+Mensagem da Thread 37
+Satélite responde a Mensagem da Thread 37
+Mensagem da Thread 36
+Satélite responde a Mensagem da Thread 36
+Mensagem da Thread 39
+Satélite responde a Mensagem da Thread 39
+Mensagem da Thread 39
+Satélite responde a Mensagem da Thread 39
+Mensagem da Thread 37
+Satélite responde a Mensagem da Thread 37
+Mensagem da Thread 36
+Satélite responde a Mensagem da Thread 36
+Mensagem da Thread 38
+Satélite responde a Mensagem da Thread 38
+Mensagem da Thread 35
+Satélite responde a Mensagem da Thread 35
+Mensagem da Thread 39
+Satélite responde a Mensagem da Thread 39
+Mensagem da Thread 38
+Satélite responde a Mensagem da Thread 38
+Mensagem da Thread 36
+Satélite responde a Mensagem da Thread 36
+Mensagem da Thread 37
+Satélite responde a Mensagem da Thread 37
+Mensagem da Thread 35
+Satélite responde a Mensagem da Thread 35
+Mensagem de Francisco: Franasfgewagwe
+Satélite responde a Mensagem de Francisco: Franasfgewagwe
+Mensagem automática: 1705598043568
+Satélite responde a Mensagem automática: 1705598043568
+Mensagem automática: 1705598044583
+Satélite responde a Mensagem automática: 1705598044583
+Mensagem automática: 1705598045588
+Satélite responde a Mensagem automática: 1705598045588
+Mensagem automática: 1705598046593
+Satélite responde a Mensagem automática: 1705598046593
+Mensagem automática: 1705598047605
+Satélite responde a Mensagem automática: 1705598047605
+Mensagem automática: 1705598048609
+Satélite responde a Mensagem automática: 1705598048609
+Mensagem automática: 1705598049622
+Satélite responde a Mensagem automática: 1705598049622
+Mensagem automática: 1705598050626
+Satélite responde a Mensagem automática: 1705598050626
+Mensagem automática: 1705598051627
+Satélite responde a Mensagem automática: 1705598051627
+Mensagem automática: 1705598052629
+Satélite responde a Mensagem automática: 1705598052629
+Mensagem automática: 1705598053635
+Satélite responde a Mensagem automática: 1705598053635
+Mensagem automática: 1705598054636
+Satélite responde a Mensagem automática: 1705598054636
+Mensagem automática: 1705598159149
+Satélite responde a Mensagem automática: 1705598159149
+Mensagem automática: 1705598160164
+Satélite responde a Mensagem automática: 1705598160164
+Mensagem automática: 1705598161168
+Satélite responde a Mensagem automática: 1705598161168
+Mensagem automática: 1705598162179
+Satélite responde a Mensagem automática: 1705598162179
+Mensagem automática: 1705598163182
+Satélite responde a Mensagem automática: 1705598163182
+Mensagem automática: 1705598164187
+Satélite responde a Mensagem automática: 1705598164187
+Mensagem automática: 1705598165192
+Satélite responde a Mensagem automática: 1705598165192
+Mensagem automática: 1705598166206
+Satélite responde a Mensagem automática: 1705598166206
+Mensagem automática: 1705598167214
+Satélite responde a Mensagem automática: 1705598167214
+Mensagem automática: 1705598168227
+Satélite responde a Mensagem automática: 1705598168227
+Mensagem automática: 1705598169229
+Satélite responde a Mensagem automática: 1705598169229
+Mensagem automática: 1705598170241
+Satélite responde a Mensagem automática: 1705598170241
+Mensagem automática: 1705598171255
+Satélite responde a Mensagem automática: 1705598171255
+Mensagem automática: 1705598172261
+Satélite responde a Mensagem automática: 1705598172261
+Mensagem automática: 1705598173263
+Satélite responde a Mensagem automática: 1705598173263
+Mensagem automática: 1705598174275
+Satélite responde a Mensagem automática: 1705598174275
+Mensagem automática: 1705598175279
+Satélite responde a Mensagem automática: 1705598175279
+Mensagem automática: 1705598176283
+Satélite responde a Mensagem automática: 1705598176283
+Mensagem automática: 1705598177285
+Satélite responde a Mensagem automática: 1705598177285
+Mensagem automática: 1705598178299
+Satélite responde a Mensagem automática: 1705598178299
+Mensagem automática: 1705598179309
+Satélite responde a Mensagem automática: 1705598179309
+Mensagem automática: 1705598180324
+Satélite responde a Mensagem automática: 1705598180324
+Mensagem automática: 1705598181338
+Satélite responde a Mensagem automática: 1705598181338
+Mensagem automática: 1705598182339
+Satélite responde a Mensagem automática: 1705598182339
+Mensagem automática: 1705598183342
+Satélite responde a Mensagem automática: 1705598183342
+Mensagem automática: 1705598184356
+Satélite responde a Mensagem automática: 1705598184356
+Mensagem automática: 1705598185357
+Satélite responde a Mensagem automática: 1705598185357
+Mensagem automática: 1705598186359
+Satélite responde a Mensagem automática: 1705598186359
+Mensagem automática: 1705598187370
+Satélite responde a Mensagem automática: 1705598187370
+Mensagem automática: 1705598188384
+Satélite responde a Mensagem automática: 1705598188384
+Mensagem automática: 1705598189391
+Satélite responde a Mensagem automática: 1705598189391
+Mensagem automática: 1705598190405
+Satélite responde a Mensagem automática: 1705598190405
+Mensagem automática: 1705598191409
+Satélite responde a Mensagem automática: 1705598191409
+Mensagem automática: 1705598192424
+Satélite responde a Mensagem automática: 1705598192424
+Mensagem automática: 1705598193425
+Satélite responde a Mensagem automática: 1705598193425
+Mensagem automática: 1705598194434
+Satélite responde a Mensagem automática: 1705598194434
+Mensagem automática: 1705598195437
+Satélite responde a Mensagem automática: 1705598195437
+Mensagem automática: 1705598196439
+Satélite responde a Mensagem automática: 1705598196439
+Mensagem automática: 1705598197443
+Satélite responde a Mensagem automática: 1705598197443
+Mensagem automática: 1705598198456
+Satélite responde a Mensagem automática: 1705598198456
+Mensagem automática: 1705598199461
+Satélite responde a Mensagem automática: 1705598199461
+Mensagem automática: 1705598200469
+Satélite responde a Mensagem automática: 1705598200469
+Mensagem automática: 1705598201480
+Satélite responde a Mensagem automática: 1705598201480
+Mensagem automática: 1705598202495
+Satélite responde a Mensagem automática: 1705598202495
+Mensagem automática: 1705598203497
+Satélite responde a Mensagem automática: 1705598203497
+Mensagem automática: 1705598506646
+Satélite responde a Mensagem automática: 1705598506646
+Mensagem automática: 1705598507655
+Satélite responde a Mensagem automática: 1705598507655
+Mensagem automática: 1705598508664
+Satélite responde a Mensagem automática: 1705598508664
+Mensagem automática: 1705598509672
+Satélite responde a Mensagem automática: 1705598509672
+Mensagem automática: 1705598510683
+Satélite responde a Mensagem automática: 1705598510683
+Mensagem automática: 1705598511696
+Satélite responde a Mensagem automática: 1705598511696
+Mensagem automática: 1705598676731
+Satélite responde a Mensagem automática: 1705598676731
+Mensagem automática: 1705598677741
+Satélite responde a Mensagem automática: 1705598677741
+Mensagem automática: 1705598678746
+Satélite responde a Mensagem automática: 1705598678746
+Mensagem automática: 1705598679756
+Satélite responde a Mensagem automática: 1705598679756
+Mensagem automática: 1705598680757
+Satélite responde a Mensagem automática: 1705598680757
+Mensagem automática: 1705598681760
+Satélite responde a Mensagem automática: 1705598681760
+Mensagem automática: 1705598682767
+Satélite responde a Mensagem automática: 1705598682767
+Mensagem automática: 1705598969531
+Satélite responde a Mensagem automática: 1705598969531
+Mensagem automática: 1705598970541
+Satélite responde a Mensagem automática: 1705598970541
+Mensagem automática: 1705598971552
+Satélite responde a Mensagem automática: 1705598971552
+Mensagem automática: 1705598972563
+Satélite responde a Mensagem automática: 1705598972563
+Mensagem automática: 1705598973572
+Satélite responde a Mensagem automática: 1705598973572
+Mensagem automática: 1705598974576
+Satélite responde a Mensagem automática: 1705598974576
+Mensagem automática: 1705598975587
+Satélite responde a Mensagem automática: 1705598975587
+Mensagem automática: 1705599079745
+Satélite responde a Mensagem automática: 1705599079745
+Mensagem automática: 1705599080754
+Satélite responde a Mensagem automática: 1705599080754
+Mensagem automática: 1705599081757
+Satélite responde a Mensagem automática: 1705599081757
+Mensagem automática: 1705599082765
+Satélite responde a Mensagem automática: 1705599082765
+Mensagem automática: 1705599083772
+Satélite responde a Mensagem automática: 1705599083772
+Mensagem automática: 1705599084779
+Satélite responde a Mensagem automática: 1705599084779
+Mensagem automática: 1705599085793
+Satélite responde a Mensagem automática: 1705599085793
+Mensagem automática: 1705599086795
+Satélite responde a Mensagem automática: 1705599086795
+Mensagem automática: 1705599087804
+Satélite responde a Mensagem automática: 1705599087804
+Mensagem automática: 1705599088806
+Satélite responde a Mensagem automática: 1705599088806
+Mensagem automática: 1705599089813
+Satélite responde a Mensagem automática: 1705599089813
+Mensagem automática: 1705599090815
+Satélite responde a Mensagem automática: 1705599090815
+Mensagem automática: 1705599424027
+Satélite responde a Mensagem automática: 1705599424027
+Mensagem automática: 1705599425044
+Satélite responde a Mensagem automática: 1705599425044
+Mensagem automática: 1705599426050
+Satélite responde a Mensagem automática: 1705599426050
+Mensagem automática: 1705599427065
+Satélite responde a Mensagem automática: 1705599427065
+Mensagem automática: 1705599428079
+Satélite responde a Mensagem automática: 1705599428079
+Mensagem automática: 1705599429082
+Satélite responde a Mensagem automática: 1705599429082
+Mensagem automática: 1705599430088
+Satélite responde a Mensagem automática: 1705599430088
+Mensagem automática: 1705599431091
+Satélite responde a Mensagem automática: 1705599431091
+Mensagem automática: 1705599432098
+Satélite responde a Mensagem automática: 1705599432098
+Mensagem automática: 1705599433101
+Satélite responde a Mensagem automática: 1705599433101
+Mensagem automática: 1705599441034
+Satélite responde a Mensagem automática: 1705599441034
+Mensagem automática: 1705599442037
+Satélite responde a Mensagem automática: 1705599442037
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem da Thread 48
+Satélite responde a Mensagem da Thread 48
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 48
+Satélite responde a Mensagem da Thread 48
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem da Thread 48
+Satélite responde a Mensagem da Thread 48
+Mensagem automática: 1705599460909
+Satélite responde a Mensagem automática: 1705599460909
+Mensagem automática: 1705599461912
+Satélite responde a Mensagem automática: 1705599461912
+Mensagem automática: 1705599462922
+Satélite responde a Mensagem automática: 1705599462922
+Mensagem automática: 1705599463927
+Satélite responde a Mensagem automática: 1705599463927
+Mensagem automática: 1705599464931
+Satélite responde a Mensagem automática: 1705599464931
+Mensagem automática: 1705599465942
+Satélite responde a Mensagem automática: 1705599465942
+Mensagem automática: 1705599466950
+Satélite responde a Mensagem automática: 1705599466950
+Mensagem automática: 1705599806211
+Satélite responde a Mensagem automática: 1705599806211
+Mensagem automática: 1705599807218
+Satélite responde a Mensagem automática: 1705599807218
+Mensagem automática: 1705599808224
+Satélite responde a Mensagem automática: 1705599808224
+Mensagem automática: 1705599809226
+Satélite responde a Mensagem automática: 1705599809226
+Mensagem automática: 1705599810238
+Satélite responde a Mensagem automática: 1705599810238
+Mensagem automática: 1705599811243
+Satélite responde a Mensagem automática: 1705599811243
+Mensagem automática: 1705599812249
+Satélite responde a Mensagem automática: 1705599812249
+Mensagem automática: 1705599813256
+Satélite responde a Mensagem automática: 1705599813256
+Mensagem automática: 1705599814265
+Satélite responde a Mensagem automática: 1705599814265
+Mensagem automática: 1705599815275
+Satélite responde a Mensagem automática: 1705599815275
+Mensagem automática: 1705599816284
+Satélite responde a Mensagem automática: 1705599816284
+Mensagem automática: 1705599817285
+Satélite responde a Mensagem automática: 1705599817285
+Mensagem automática: 1705599818294
+Satélite responde a Mensagem automática: 1705599818294
+Mensagem automática: 1705599819303
+Satélite responde a Mensagem automática: 1705599819303
+Mensagem automática: 1705599820306
+Satélite responde a Mensagem automática: 1705599820306
+Mensagem automática: 1705599821316
+Satélite responde a Mensagem automática: 1705599821316
+Mensagem automática: 1705600102517
+Satélite responde a Mensagem automática: 1705600102517
+Mensagem automática: 1705600103524
+Satélite responde a Mensagem automática: 1705600103524
+Mensagem automática: 1705600104534
+Satélite responde a Mensagem automática: 1705600104534
+Mensagem automática: 1705600105537
+Satélite responde a Mensagem automática: 1705600105537
+Mensagem automática: 1705600106553
+Satélite responde a Mensagem automática: 1705600106553
+Mensagem automática: 1705600107556
+Satélite responde a Mensagem automática: 1705600107556
+Mensagem automática: 1705600108563
+Satélite responde a Mensagem automática: 1705600108563
+Mensagem automática: 1705600109568
+Satélite responde a Mensagem automática: 1705600109568
+Mensagem automática: 1705600110573
+Satélite responde a Mensagem automática: 1705600110573
+Mensagem automática: 1705600111585
+Satélite responde a Mensagem automática: 1705600111585
+Mensagem automática: 1705600112593
+Satélite responde a Mensagem automática: 1705600112593
+Mensagem automática: 1705600113604
+Satélite responde a Mensagem automática: 1705600113604
+Mensagem automática: 1705600114610
+Satélite responde a Mensagem automática: 1705600114610
+Mensagem automática: 1705600446474
+Satélite responde a Mensagem automática: 1705600446474
+Mensagem automática: 1705600447483
+Satélite responde a Mensagem automática: 1705600447483
+Mensagem automática: 1705600448490
+Satélite responde a Mensagem automática: 1705600448490
+Mensagem automática: 1705600451322
+Satélite responde a Mensagem automática: 1705600451322
+Mensagem automática: 1705600452329
+Satélite responde a Mensagem automática: 1705600452329
+Mensagem automática: 1705600453335
+Satélite responde a Mensagem automática: 1705600453335
+Mensagem automática: 1705600454341
+Satélite responde a Mensagem automática: 1705600454341
+Mensagem automática: 1705600455344
+Satélite responde a Mensagem automática: 1705600455344
+Mensagem automática: 1705600456357
+Satélite responde a Mensagem automática: 1705600456357
+Mensagem automática: 1705600457359
+Satélite responde a Mensagem automática: 1705600457359
+Mensagem automática: 1705600459242
+Satélite responde a Mensagem automática: 1705600459242
+Mensagem automática: 1705600460248
+Satélite responde a Mensagem automática: 1705600460248
+Mensagem automática: 1705600461980
+Satélite responde a Mensagem automática: 1705600461980
+Mensagem automática: 1705600462986
+Satélite responde a Mensagem automática: 1705600462986
+Mensagem automática: 1705600463996
+Satélite responde a Mensagem automática: 1705600463996
+Mensagem automática: 1705600465007
+Satélite responde a Mensagem automática: 1705600465007
+Mensagem automática: 1705600466010
+Satélite responde a Mensagem automática: 1705600466010
+Mensagem automática: 1705600467022
+Satélite responde a Mensagem automática: 1705600467022
+Mensagem automática: 1705600467769
+Satélite responde a Mensagem automática: 1705600467769
+Mensagem automática: 1705600471079
+Satélite responde a Mensagem automática: 1705600471079
+Mensagem automática: 1705600472085
+Satélite responde a Mensagem automática: 1705600472085
+Mensagem da Thread 50
+Satélite responde a Mensagem da Thread 50
+Mensagem da Thread 53
+Satélite responde a Mensagem da Thread 53
+Mensagem da Thread 51
+Satélite responde a Mensagem da Thread 51
+Mensagem da Thread 52
+Satélite responde a Mensagem da Thread 52
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem automática: 1705600482910
+Satélite responde a Mensagem automática: 1705600482910
+Mensagem da Thread 50
+Satélite responde a Mensagem da Thread 50
+Mensagem da Thread 52
+Satélite responde a Mensagem da Thread 52
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem da Thread 51
+Satélite responde a Mensagem da Thread 51
+Mensagem da Thread 53
+Satélite responde a Mensagem da Thread 53
+Mensagem automática: 1705600483913
+Satélite responde a Mensagem automática: 1705600483913
+Mensagem da Thread 49
+Satélite responde a Mensagem da Thread 49
+Mensagem da Thread 50
+Satélite responde a Mensagem da Thread 50
+Mensagem da Thread 51
+Satélite responde a Mensagem da Thread 51
+Mensagem da Thread 52
+Satélite responde a Mensagem da Thread 52
+Mensagem da Thread 53
+Satélite responde a Mensagem da Thread 53
+Mensagem automática: 1705600571943
+Satélite responde a Mensagem automática: 1705600571943
+Mensagem automática: 1705600572059
+Satélite responde a Mensagem automática: 1705600572059
+Mensagem automática: 1705600572166
+Satélite responde a Mensagem automática: 1705600572166
+Mensagem automática: 1705600572275
+Satélite responde a Mensagem automática: 1705600572275
+Mensagem automática: 1705600572385
+Satélite responde a Mensagem automática: 1705600572385
+Mensagem automática: 1705600572490
+Satélite responde a Mensagem automática: 1705600572490
+Mensagem automática: 1705600572597
+Satélite responde a Mensagem automática: 1705600572597
+Mensagem automática: 1705600572704
+Satélite responde a Mensagem automática: 1705600572704
+Mensagem automática: 1705600572813
+Satélite responde a Mensagem automática: 1705600572813
+Mensagem automática: 1705600572922
+Satélite responde a Mensagem automática: 1705600572922
+Mensagem automática: 1705600573030
+Satélite responde a Mensagem automática: 1705600573030
+Mensagem automática: 1705600573140
+Satélite responde a Mensagem automática: 1705600573140
+Mensagem automática: 1705600573247
+Satélite responde a Mensagem automática: 1705600573247
+Mensagem automática: 1705600573355
+Satélite responde a Mensagem automática: 1705600573355
+Mensagem automática: 1705600573464
+Satélite responde a Mensagem automática: 1705600573464
+Mensagem automática: 1705600573572
+Satélite responde a Mensagem automática: 1705600573572
+Mensagem automática: 1705600573681
+Satélite responde a Mensagem automática: 1705600573681
+Mensagem automática: 1705600573789
+Satélite responde a Mensagem automática: 1705600573789
+Mensagem automática: 1705600573898
+Satélite responde a Mensagem automática: 1705600573898
+Mensagem automática: 1705600574004
+Satélite responde a Mensagem automática: 1705600574004
+Mensagem automática: 1705600574112
+Satélite responde a Mensagem automática: 1705600574112
+Mensagem automática: 1705600574221
+Satélite responde a Mensagem automática: 1705600574221
+Mensagem automática: 1705600574327
+Satélite responde a Mensagem automática: 1705600574327
+Mensagem automática: 1705600574435
+Satélite responde a Mensagem automática: 1705600574435
+Mensagem automática: 1705600574542
+Satélite responde a Mensagem automática: 1705600574542
+Mensagem automática: 1705600574649
+Satélite responde a Mensagem automática: 1705600574649
+Mensagem automática: 1705600574758
+Satélite responde a Mensagem automática: 1705600574758
+Mensagem automática: 1705600574868
+Satélite responde a Mensagem automática: 1705600574868
+Mensagem automática: 1705600574975
+Satélite responde a Mensagem automática: 1705600574975
+Mensagem automática: 1705600575084
+Satélite responde a Mensagem automática: 1705600575084
+Mensagem automática: 1705600576624
+Satélite responde a Mensagem automática: 1705600576624
+Mensagem automática: 1705600576731
+Satélite responde a Mensagem automática: 1705600576731
+Mensagem automática: 1705600576840
+Satélite responde a Mensagem automática: 1705600576840
+Mensagem automática: 1705600576949
+Satélite responde a Mensagem automática: 1705600576949
+Mensagem automática: 1705600577058
+Satélite responde a Mensagem automática: 1705600577058
+Mensagem automática: 1705600577166
+Satélite responde a Mensagem automática: 1705600577166
+Mensagem automática: 1705600577272
+Satélite responde a Mensagem automática: 1705600577272
+Mensagem automática: 1705600577380
+Satélite responde a Mensagem automática: 1705600577380
+Mensagem automática: 1705600577488
+Satélite responde a Mensagem automática: 1705600577488
+Mensagem automática: 1705600577595
+Satélite responde a Mensagem automática: 1705600577595
+Mensagem automática: 1705600577704
+Satélite responde a Mensagem automática: 1705600577704
+Mensagem automática: 1705600577813
+Satélite responde a Mensagem automática: 1705600577813
+Mensagem automática: 1705600577920
+Satélite responde a Mensagem automática: 1705600577920
+Mensagem automática: 1705600578029
+Satélite responde a Mensagem automática: 1705600578029
+Mensagem automática: 1705600578137
+Satélite responde a Mensagem automática: 1705600578137
+Mensagem automática: 1705600578244
+Satélite responde a Mensagem automática: 1705600578244
+Mensagem automática: 1705600645967
+Satélite responde a Mensagem automática: 1705600645967
+Mensagem automática: 1705600646084
+Satélite responde a Mensagem automática: 1705600646084
+Mensagem automática: 1705600646192
+Satélite responde a Mensagem automática: 1705600646192
+Mensagem automática: 1705600646301
+Satélite responde a Mensagem automática: 1705600646301
+Mensagem automática: 1705600646410
+Satélite responde a Mensagem automática: 1705600646410
+Mensagem automática: 1705600646519
+Satélite responde a Mensagem automática: 1705600646519
+Mensagem automática: 1705600646629
+Satélite responde a Mensagem automática: 1705600646629
+Mensagem automática: 1705600646736
+Satélite responde a Mensagem automática: 1705600646736
+Mensagem automática: 1705600646846
+Satélite responde a Mensagem automática: 1705600646846
+Mensagem automática: 1705600646954
+Satélite responde a Mensagem automática: 1705600646954
+Mensagem automática: 1705600647061
+Satélite responde a Mensagem automática: 1705600647061
+Mensagem automática: 1705600647168
+Satélite responde a Mensagem automática: 1705600647168
+Mensagem automática: 1705600647277
+Satélite responde a Mensagem automática: 1705600647277
+Mensagem automática: 1705600647385
+Satélite responde a Mensagem automática: 1705600647385
+Mensagem automática: 1705600647491
+Satélite responde a Mensagem automática: 1705600647491
+Mensagem automática: 1705600647600
+Satélite responde a Mensagem automática: 1705600647600
+Mensagem automática: 1705600647708
+Satélite responde a Mensagem automática: 1705600647708
+Mensagem automática: 1705600647817
+Satélite responde a Mensagem automática: 1705600647817
+Mensagem automática: 1705600647926
+Satélite responde a Mensagem automática: 1705600647926
+Mensagem automática: 1705600648032
+Satélite responde a Mensagem automática: 1705600648032
+Mensagem automática: 1705600648141
+Satélite responde a Mensagem automática: 1705600648141
+Mensagem automática: 1705600648251
+Satélite responde a Mensagem automática: 1705600648251
+Mensagem automática: 1705600648360
+Satélite responde a Mensagem automática: 1705600648360
+Mensagem automática: 1705600648470
+Satélite responde a Mensagem automática: 1705600648470
+Mensagem automática: 1705600648579
+Satélite responde a Mensagem automática: 1705600648579
+Mensagem automática: 1705600648686
+Satélite responde a Mensagem automática: 1705600648686
+Mensagem automática: 1705600648795
+Satélite responde a Mensagem automática: 1705600648795
+Mensagem automática: 1705600648902
+Satélite responde a Mensagem automática: 1705600648902
+Mensagem automática: 1705600650591
+Satélite responde a Mensagem automática: 1705600650591
+Mensagem automática: 1705600650697
+Satélite responde a Mensagem automática: 1705600650697
+Mensagem automática: 1705600650806
+Satélite responde a Mensagem automática: 1705600650806
+Mensagem automática: 1705600650917
+Satélite responde a Mensagem automática: 1705600650917
+Mensagem automática: 1705600651024
+Satélite responde a Mensagem automática: 1705600651024
+Mensagem automática: 1705600651131
+Satélite responde a Mensagem automática: 1705600651131
+Mensagem automática: 1705600651239
+Satélite responde a Mensagem automática: 1705600651239
+Mensagem automática: 1705600651348
+Satélite responde a Mensagem automática: 1705600651348
+Mensagem automática: 1705600651456
+Satélite responde a Mensagem automática: 1705600651456
+Mensagem automática: 1705600651566
+Satélite responde a Mensagem automática: 1705600651566
+Mensagem automática: 1705600651673
+Satélite responde a Mensagem automática: 1705600651673
+Mensagem automática: 1705600651781
+Satélite responde a Mensagem automática: 1705600651781
+Mensagem automática: 1705600651889
+Satélite responde a Mensagem automática: 1705600651889
+Mensagem automática: 1705600651997
+Satélite responde a Mensagem automática: 1705600651997
+Mensagem automática: 1705600652104
+Satélite responde a Mensagem automática: 1705600652104
+Mensagem automática: 1705600652212
+Satélite responde a Mensagem automática: 1705600652212
+Mensagem automática: 1705600652319
+Satélite responde a Mensagem automática: 1705600652319
+Mensagem automática: 1705600652427
+Satélite responde a Mensagem automática: 1705600652427
+Mensagem automática: 1705600652535
+Satélite responde a Mensagem automática: 1705600652535
+Mensagem automática: 1705600652644
+Satélite responde a Mensagem automática: 1705600652644
+Mensagem automática: 1705600652751
+Satélite responde a Mensagem automática: 1705600652751
+Mensagem automática: 1705600652858
+Satélite responde a Mensagem automática: 1705600652858
+Mensagem automática: 1705600652967
+Satélite responde a Mensagem automática: 1705600652967
+Mensagem automática: 1705600653076
+Satélite responde a Mensagem automática: 1705600653076
+Mensagem automática: 1705600653184
+Satélite responde a Mensagem automática: 1705600653184
+Mensagem automática: 1705600653292
+Satélite responde a Mensagem automática: 1705600653292
+Mensagem automática: 1705600653400
+Satélite responde a Mensagem automática: 1705600653400
+Mensagem automática: 1705600653507
+Satélite responde a Mensagem automática: 1705600653507
+Mensagem automática: 1705600653615
+Satélite responde a Mensagem automática: 1705600653615
+Mensagem automática: 1705600653721
+Satélite responde a Mensagem automática: 1705600653721
+Mensagem automática: 1705600653829
+Satélite responde a Mensagem automática: 1705600653829
+Mensagem automática: 1705600653935
+Satélite responde a Mensagem automática: 1705600653935
+Mensagem automática: 1705600654041
+Satélite responde a Mensagem automática: 1705600654041
+Mensagem automática: 1705600654150
+Satélite responde a Mensagem automática: 1705600654150
+Mensagem automática: 1705600654259
+Satélite responde a Mensagem automática: 1705600654259
+Mensagem automática: 1705600654366
+Satélite responde a Mensagem automática: 1705600654366
+Mensagem automática: 1705600654476
+Satélite responde a Mensagem automática: 1705600654476
+Mensagem automática: 1705600654582
+Satélite responde a Mensagem automática: 1705600654582
+Mensagem automática: 1705600654691
+Satélite responde a Mensagem automática: 1705600654691
+Mensagem automática: 1705600654800
+Satélite responde a Mensagem automática: 1705600654800
+Mensagem automática: 1705600654910
+Satélite responde a Mensagem automática: 1705600654910
+Mensagem automática: 1705600655019
+Satélite responde a Mensagem automática: 1705600655019
+Mensagem automática: 1705600655127
+Satélite responde a Mensagem automática: 1705600655127
+Mensagem automática: 1705600655236
+Satélite responde a Mensagem automática: 1705600655236
+Mensagem automática: 1705600655344
+Satélite responde a Mensagem automática: 1705600655344
+Mensagem automática: 1705600655453
+Satélite responde a Mensagem automática: 1705600655453
+Mensagem automática: 1705600655561
+Satélite responde a Mensagem automática: 1705600655561
+Mensagem automática: 1705600655666
+Satélite responde a Mensagem automática: 1705600655666
+Mensagem automática: 1705600655773
+Satélite responde a Mensagem automática: 1705600655773
+Mensagem automática: 1705600655882
+Satélite responde a Mensagem automática: 1705600655882
+Mensagem automática: 1705600655990
+Satélite responde a Mensagem automática: 1705600655990
+Mensagem automática: 1705600656098
+Satélite responde a Mensagem automática: 1705600656098
+Mensagem automática: 1705600656205
+Satélite responde a Mensagem automática: 1705600656205
+Mensagem automática: 1705600656313
+Satélite responde a Mensagem automática: 1705600656313
+Mensagem automática: 1705600656420
+Satélite responde a Mensagem automática: 1705600656420
+Mensagem automática: 1705600656530
+Satélite responde a Mensagem automática: 1705600656530
+Mensagem automática: 1705600656639
+Satélite responde a Mensagem automática: 1705600656639
+Mensagem automática: 1705600656747
+Satélite responde a Mensagem automática: 1705600656747
+Mensagem automática: 1705600656855
+Satélite responde a Mensagem automática: 1705600656855
+Mensagem automática: 1705600656963
+Satélite responde a Mensagem automática: 1705600656963
+Mensagem automática: 1705600657074
+Satélite responde a Mensagem automática: 1705600657074
+Mensagem automática: 1705600657183
+Satélite responde a Mensagem automática: 1705600657183
+Mensagem automática: 1705600657289
+Satélite responde a Mensagem automática: 1705600657289
+Mensagem automática: 1705600657398
+Satélite responde a Mensagem automática: 1705600657398
+Mensagem automática: 1705600657507
+Satélite responde a Mensagem automática: 1705600657507
+Mensagem automática: 1705600657614
+Satélite responde a Mensagem automática: 1705600657614
+Mensagem automática: 1705600657722
+Satélite responde a Mensagem automática: 1705600657722
+Mensagem automática: 1705600657830
+Satélite responde a Mensagem automática: 1705600657830
+Mensagem automática: 1705600657937
+Satélite responde a Mensagem automática: 1705600657937
+Mensagem automática: 1705600658045
+Satélite responde a Mensagem automática: 1705600658045
+Mensagem automática: 1705600658153
+Satélite responde a Mensagem automática: 1705600658153
+Mensagem automática: 1705600658261
+Satélite responde a Mensagem automática: 1705600658261
+Mensagem automática: 1705600658369
+Satélite responde a Mensagem automática: 1705600658369
+Mensagem automática: 1705600658475
+Satélite responde a Mensagem automática: 1705600658475
+Mensagem automática: 1705600658584
+Satélite responde a Mensagem automática: 1705600658584
+Mensagem automática: 1705600658692
+Satélite responde a Mensagem automática: 1705600658692
+Mensagem automática: 1705600658799
+Satélite responde a Mensagem automática: 1705600658799
+Mensagem automática: 1705600658907
+Satélite responde a Mensagem automática: 1705600658907
+Mensagem automática: 1705600659016
+Satélite responde a Mensagem automática: 1705600659016
+Mensagem automática: 1705600659123
+Satélite responde a Mensagem automática: 1705600659123
+Mensagem automática: 1705600659231
+Satélite responde a Mensagem automática: 1705600659231
+Mensagem automática: 1705600659338
+Satélite responde a Mensagem automática: 1705600659338
+Mensagem automática: 1705600659446
+Satélite responde a Mensagem automática: 1705600659446
+Mensagem automática: 1705600659555
+Satélite responde a Mensagem automática: 1705600659555
+Mensagem automática: 1705600659663
+Satélite responde a Mensagem automática: 1705600659663
+Mensagem automática: 1705600659774
+Satélite responde a Mensagem automática: 1705600659774
+Mensagem automática: 1705600659882
+Satélite responde a Mensagem automática: 1705600659882
+Mensagem automática: 1705600659990
+Satélite responde a Mensagem automática: 1705600659990
+Mensagem automática: 1705600660097
+Satélite responde a Mensagem automática: 1705600660097
+Mensagem automática: 1705600660206
+Satélite responde a Mensagem automática: 1705600660206
+Mensagem automática: 1705600660313
+Satélite responde a Mensagem automática: 1705600660313
+Mensagem automática: 1705600660421
+Satélite responde a Mensagem automática: 1705600660421
+Mensagem automática: 1705600660529
+Satélite responde a Mensagem automática: 1705600660529
+Mensagem automática: 1705600660638
+Satélite responde a Mensagem automática: 1705600660638
+Mensagem automática: 1705600660747
+Satélite responde a Mensagem automática: 1705600660747
+Mensagem automática: 1705600660858
+Satélite responde a Mensagem automática: 1705600660858
+Mensagem automática: 1705600660965
+Satélite responde a Mensagem automática: 1705600660965
+Mensagem automática: 1705600661075
+Satélite responde a Mensagem automática: 1705600661075
+Mensagem automática: 1705600661184
+Satélite responde a Mensagem automática: 1705600661184
+Mensagem automática: 1705600661291
+Satélite responde a Mensagem automática: 1705600661291
+Mensagem automática: 1705600661401
+Satélite responde a Mensagem automática: 1705600661401
+Mensagem automática: 1705600661510
+Satélite responde a Mensagem automática: 1705600661510
+Mensagem automática: 1705600661619
+Satélite responde a Mensagem automática: 1705600661619
+Mensagem automática: 1705600661726
+Satélite responde a Mensagem automática: 1705600661726
+Mensagem automática: 1705600661834
+Satélite responde a Mensagem automática: 1705600661834
+Mensagem automática: 1705600661941
+Satélite responde a Mensagem automática: 1705600661941
+Mensagem automática: 1705600662050
+Satélite responde a Mensagem automática: 1705600662050
+Mensagem automática: 1705600662161
+Satélite responde a Mensagem automática: 1705600662161
+Mensagem automática: 1705600662270
+Satélite responde a Mensagem automática: 1705600662270
+Mensagem automática: 1705600662378
+Satélite responde a Mensagem automática: 1705600662378
+Mensagem automática: 1705600662486
+Satélite responde a Mensagem automática: 1705600662486
+Mensagem automática: 1705600662593
+Satélite responde a Mensagem automática: 1705600662593
+Mensagem automática: 1705600662700
+Satélite responde a Mensagem automática: 1705600662700
+Mensagem automática: 1705600662810
+Satélite responde a Mensagem automática: 1705600662810
+Mensagem automática: 1705600662920
+Satélite responde a Mensagem automática: 1705600662920
+Mensagem automática: 1705600663028
+Satélite responde a Mensagem automática: 1705600663028
+Mensagem automática: 1705600663135
+Satélite responde a Mensagem automática: 1705600663135
+Mensagem automática: 1705600663244
+Satélite responde a Mensagem automática: 1705600663244
+Mensagem automática: 1705600663353
+Satélite responde a Mensagem automática: 1705600663353
+Mensagem automática: 1705600663460
+Satélite responde a Mensagem automática: 1705600663460
+Mensagem automática: 1705600663568
+Satélite responde a Mensagem automática: 1705600663568
+Mensagem automática: 1705600663674
+Satélite responde a Mensagem automática: 1705600663674
+Mensagem automática: 1705600663781
+Satélite responde a Mensagem automática: 1705600663781
+Mensagem automática: 1705600663888
+Satélite responde a Mensagem automática: 1705600663888
+Mensagem automática: 1705600663995
+Satélite responde a Mensagem automática: 1705600663995
+Mensagem automática: 1705600664103
+Satélite responde a Mensagem automática: 1705600664103
+Mensagem automática: 1705600664211
+Satélite responde a Mensagem automática: 1705600664211
+Mensagem automática: 1705600664320
+Satélite responde a Mensagem automática: 1705600664320
+Mensagem automática: 1705600664428
+Satélite responde a Mensagem automática: 1705600664428
+Mensagem automática: 1705600664535
+Satélite responde a Mensagem automática: 1705600664535
+Mensagem automática: 1705600664644
+Satélite responde a Mensagem automática: 1705600664644
+Mensagem automática: 1705600664752
+Satélite responde a Mensagem automática: 1705600664752
+Mensagem automática: 1705600664863
+Satélite responde a Mensagem automática: 1705600664863
+Mensagem automática: 1705600664971
+Satélite responde a Mensagem automática: 1705600664971
+Mensagem automática: 1705600665080
+Satélite responde a Mensagem automática: 1705600665080
+Mensagem automática: 1705600665189
+Satélite responde a Mensagem automática: 1705600665189
+Mensagem automática: 1705600665299
+Satélite responde a Mensagem automática: 1705600665299
+Mensagem automática: 1705600665405
+Satélite responde a Mensagem automática: 1705600665405
+Mensagem automática: 1705600665513
+Satélite responde a Mensagem automática: 1705600665513
+Mensagem automática: 1705600665619
+Satélite responde a Mensagem automática: 1705600665619
+Mensagem automática: 1705600665726
+Satélite responde a Mensagem automática: 1705600665726
+Mensagem automática: 1705600665831
+Satélite responde a Mensagem automática: 1705600665831
+Mensagem automática: 1705600665939
+Satélite responde a Mensagem automática: 1705600665939
+Mensagem automática: 1705600666047
+Satélite responde a Mensagem automática: 1705600666047
+Mensagem automática: 1705600666155
+Satélite responde a Mensagem automática: 1705600666155
+Mensagem automática: 1705600666263
+Satélite responde a Mensagem automática: 1705600666263
+Mensagem automática: 1705600666372
+Satélite responde a Mensagem automática: 1705600666372
+Mensagem automática: 1705600666481
+Satélite responde a Mensagem automática: 1705600666481
+Mensagem automática: 1705600666589
+Satélite responde a Mensagem automática: 1705600666589
+Mensagem automática: 1705600666700
+Satélite responde a Mensagem automática: 1705600666700
+Mensagem automática: 1705600666810
+Satélite responde a Mensagem automática: 1705600666810
+Mensagem automática: 1705600666920
+Satélite responde a Mensagem automática: 1705600666920
+Mensagem automática: 1705600667030
+Satélite responde a Mensagem automática: 1705600667030
+Mensagem automática: 1705600667139
+Satélite responde a Mensagem automática: 1705600667139
+Mensagem automática: 1705600667246
+Satélite responde a Mensagem automática: 1705600667246
+Mensagem automática: 1705600667355
+Satélite responde a Mensagem automática: 1705600667355
+Mensagem automática: 1705600667461
+Satélite responde a Mensagem automática: 1705600667461
+Mensagem automática: 1705600667570
+Satélite responde a Mensagem automática: 1705600667570
+Mensagem automática: 1705600667677
+Satélite responde a Mensagem automática: 1705600667677
+Mensagem automática: 1705600667786
+Satélite responde a Mensagem automática: 1705600667786
+Mensagem automática: 1705600667893
+Satélite responde a Mensagem automática: 1705600667893
+Mensagem automática: 1705600668000
+Satélite responde a Mensagem automática: 1705600668000
+Mensagem automática: 1705600668108
+Satélite responde a Mensagem automática: 1705600668108
+Mensagem automática: 1705600668217
+Satélite responde a Mensagem automática: 1705600668217
+Mensagem automática: 1705600668325
+Satélite responde a Mensagem automática: 1705600668325
+Mensagem automática: 1705600668435
+Satélite responde a Mensagem automática: 1705600668435
+Mensagem automática: 1705600668543
+Satélite responde a Mensagem automática: 1705600668543
+Mensagem automática: 1705600668653
+Satélite responde a Mensagem automática: 1705600668653
+Mensagem automática: 1705600668758
+Satélite responde a Mensagem automática: 1705600668758
+Mensagem automática: 1705600668865
+Satélite responde a Mensagem automática: 1705600668865
+Mensagem automática: 1705600668974
+Satélite responde a Mensagem automática: 1705600668974
+Mensagem automática: 1705600669082
+Satélite responde a Mensagem automática: 1705600669082
+Mensagem automática: 1705600669190
+Satélite responde a Mensagem automática: 1705600669190
+Mensagem automática: 1705600669299
+Satélite responde a Mensagem automática: 1705600669299
+Mensagem automática: 1705600669406
+Satélite responde a Mensagem automática: 1705600669406
+Mensagem automática: 1705600669515
+Satélite responde a Mensagem automática: 1705600669515
+Mensagem automática: 1705600669625
+Satélite responde a Mensagem automática: 1705600669625
+Mensagem automática: 1705600669734
+Satélite responde a Mensagem automática: 1705600669734
+Mensagem automática: 1705600669842
+Satélite responde a Mensagem automática: 1705600669842
+Mensagem automática: 1705600669949
+Satélite responde a Mensagem automática: 1705600669949
+Mensagem automática: 1705600670056
+Satélite responde a Mensagem automática: 1705600670056
+Mensagem automática: 1705600670164
+Satélite responde a Mensagem automática: 1705600670164
+Mensagem automática: 1705600670272
+Satélite responde a Mensagem automática: 1705600670272
+Mensagem automática: 1705600670380
+Satélite responde a Mensagem automática: 1705600670380
+Mensagem automática: 1705600670489
+Satélite responde a Mensagem automática: 1705600670489
+Mensagem automática: 1705600670596
+Satélite responde a Mensagem automática: 1705600670596
+Mensagem automática: 1705600670706
+Satélite responde a Mensagem automática: 1705600670706
+Mensagem automática: 1705600670817
+Satélite responde a Mensagem automática: 1705600670817
+Mensagem automática: 1705600670926
+Satélite responde a Mensagem automática: 1705600670926
+Mensagem automática: 1705600671033
+Satélite responde a Mensagem automática: 1705600671033
+Mensagem automática: 1705600671141
+Satélite responde a Mensagem automática: 1705600671141
+Mensagem automática: 1705600671250
+Satélite responde a Mensagem automática: 1705600671250
+Mensagem automática: 1705600671360
+Satélite responde a Mensagem automática: 1705600671360
+Mensagem automática: 1705600671469
+Satélite responde a Mensagem automática: 1705600671469
+Mensagem automática: 1705600671578
+Satélite responde a Mensagem automática: 1705600671578
+Mensagem automática: 1705600671687
+Satélite responde a Mensagem automática: 1705600671687
+Mensagem automática: 1705600671795
+Satélite responde a Mensagem automática: 1705600671795
+Mensagem automática: 1705600671902
+Satélite responde a Mensagem automática: 1705600671902
+Mensagem automática: 1705600672012
+Satélite responde a Mensagem automática: 1705600672012
+Mensagem automática: 1705600672120
+Satélite responde a Mensagem automática: 1705600672120
+Mensagem automática: 1705600672229
+Satélite responde a Mensagem automática: 1705600672229
+Mensagem automática: 1705600672338
+Satélite responde a Mensagem automática: 1705600672338
+Mensagem automática: 1705600672446
+Satélite responde a Mensagem automática: 1705600672446
+Mensagem automática: 1705600672553
+Satélite responde a Mensagem automática: 1705600672553
+Mensagem automática: 1705600672661
+Satélite responde a Mensagem automática: 1705600672661
+Mensagem automática: 1705600672771
+Satélite responde a Mensagem automática: 1705600672771
+Mensagem automática: 1705600672879
+Satélite responde a Mensagem automática: 1705600672879
+Mensagem automática: 1705600672986
+Satélite responde a Mensagem automática: 1705600672986
+Mensagem automática: 1705600673094
+Satélite responde a Mensagem automática: 1705600673094
+Mensagem automática: 1705600673204
+Satélite responde a Mensagem automática: 1705600673204
+Mensagem automática: 1705600673312
+Satélite responde a Mensagem automática: 1705600673312
+Mensagem automática: 1705600673420
+Satélite responde a Mensagem automática: 1705600673420
+Mensagem automática: 1705600673526
+Satélite responde a Mensagem automática: 1705600673526
+Mensagem automática: 1705600673635
+Satélite responde a Mensagem automática: 1705600673635
+Mensagem automática: 1705600673744
+Satélite responde a Mensagem automática: 1705600673744
+Mensagem automática: 1705600673850
+Satélite responde a Mensagem automática: 1705600673850
+Mensagem automática: 1705600673958
+Satélite responde a Mensagem automática: 1705600673958
+Mensagem automática: 1705600674066
+Satélite responde a Mensagem automática: 1705600674066
+Mensagem automática: 1705600696917
+Satélite responde a Mensagem automática: 1705600696917
+Mensagem automática: 1705600699928
+Satélite responde a Mensagem automática: 1705600699928
+Mensagem automática: 1705600702940
+Satélite responde a Mensagem automática: 1705600702940
+Mensagem automática: 1705600703741
+Satélite responde a Mensagem automática: 1705600703741
+Mensagem automática: 1705600705535
+Satélite responde a Mensagem automática: 1705600705535
+Mensagem automática: 1705600709971
+Satélite responde a Mensagem automática: 1705600709971
+Mensagem automática: 1705600713162
+Satélite responde a Mensagem automática: 1705600713162
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 44
+Satélite responde a Mensagem da Thread 44
+Mensagem da Thread 43
+Satélite responde a Mensagem da Thread 43
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 44
+Satélite responde a Mensagem da Thread 44
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem da Thread 43
+Satélite responde a Mensagem da Thread 43
+Mensagem automática: 1705600802604
+Satélite responde a Mensagem automática: 1705600802604
+Mensagem da Thread 47
+Satélite responde a Mensagem da Thread 47
+Mensagem da Thread 43
+Satélite responde a Mensagem da Thread 43
+Mensagem da Thread 44
+Satélite responde a Mensagem da Thread 44
+Mensagem da Thread 45
+Satélite responde a Mensagem da Thread 45
+Mensagem da Thread 46
+Satélite responde a Mensagem da Thread 46
+Mensagem automática: 1705600806385
+Satélite responde a Mensagem automática: 1705600806385
+Mensagem automática: 1705600808891
+Satélite responde a Mensagem automática: 1705600808891
+Mensagem automática: 1705600810623
+Satélite responde a Mensagem automática: 1705600810623
+Mensagem automática: 1705600924614
+Satélite responde a Mensagem automática: 1705600924614
+Mensagem automática: 1705600927670
+Satélite responde a Mensagem automática: 1705600927670
+Mensagem automática: 1705600930678
+Satélite responde a Mensagem automática: 1705600930678
+Mensagem automática: 1705600933691
+Satélite responde a Mensagem automática: 1705600933691
+Mensagem automática: 1705600936699
+Satélite responde a Mensagem automática: 1705600936699
+Mensagem automática: 1705600939707
+Satélite responde a Mensagem automática: 1705600939707
+Mensagem automática: 1705600942714
+Satélite responde a Mensagem automática: 1705600942714
+Mensagem automática: 1705601148117
+Satélite responde a Mensagem automática: 1705601148117
+Mensagem automática: 1705601151125
+Satélite responde a Mensagem automática: 1705601151125
+Mensagem automática: 1705601154129
+Satélite responde a Mensagem automática: 1705601154129
+Mensagem automática: 1705601157135
+Satélite responde a Mensagem automática: 1705601157135
+Mensagem automática: 1705601160147
+Satélite responde a Mensagem automática: 1705601160147
+Mensagem automática: 1705601163161
+Satélite responde a Mensagem automática: 1705601163161
+Mensagem automática: 1705601166161
+Satélite responde a Mensagem automática: 1705601166161
+Mensagem automática: 1705601169162
+Satélite responde a Mensagem automática: 1705601169162
+Mensagem automática: 1705601172177
+Satélite responde a Mensagem automática: 1705601172177
+Mensagem automática: 1705601175190
+Satélite responde a Mensagem automática: 1705601175190
+Mensagem automática: 1705601178194
+Satélite responde a Mensagem automática: 1705601178194
+Mensagem automática: 1705601209415
+Satélite responde a Mensagem automática: 1705601209415
+Mensagem automática: 1705601212432
+Satélite responde a Mensagem automática: 1705601212432
+Mensagem automática: 1705601215443
+Satélite responde a Mensagem automática: 1705601215443
+Mensagem automática: 1705601218451
+Satélite responde a Mensagem automática: 1705601218451
+Mensagem automática: 1705601221458
+Satélite responde a Mensagem automática: 1705601221458
+Mensagem automática: 1705601224473
+Satélite responde a Mensagem automática: 1705601224473
+Mensagem automática: 1705601227486
+Satélite responde a Mensagem automática: 1705601227486
+Mensagem automática: 1705601230495
+Satélite responde a Mensagem automática: 1705601230495

@@ -54,7 +54,6 @@ public class MemoryUnit {
     }
 
     private String getUsernameFromMessage(String message) {
-        // Find the substring between "Mensagem de " and ":"
         int startIndex = message.indexOf("Mensagem de ") + "Mensagem de ".length();
         int endIndex = message.indexOf(":", startIndex);
 

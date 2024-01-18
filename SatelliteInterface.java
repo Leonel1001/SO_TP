@@ -16,6 +16,10 @@ public class SatelliteInterface extends JFrame {
     private AutomaticMessage autoMessageThread;
     public LinkedBlockingQueue<String> messageQueue;
     private MemoryUnit memoryUnit;
+    private ThreadCounter threadCounter; 
+    private JLabel activeThreadLabel;
+    private final Bomber bomber;
+
 
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
@@ -24,8 +28,10 @@ public class SatelliteInterface extends JFrame {
         this.autoSendMessages = false;
         this.messageQueue = new LinkedBlockingQueue<>();
         this.memoryUnit = new MemoryUnit();
+        this.bomber = new Bomber(null);
+        this.threadCounter = new ThreadCounter(kernel.getCpu(), bomber, autoMessageThread); 
+        
         initComponents();
-
     }
 
     private void initComponents() {
@@ -33,7 +39,7 @@ public class SatelliteInterface extends JFrame {
         setTitle("Satellite Interface");
         setSize(600, 400);
         setLocationRelativeTo(null);
-
+        setLayout(new BorderLayout());
 
         showInitialPage();
     }
@@ -82,6 +88,7 @@ public class SatelliteInterface extends JFrame {
 
         registerButton.addActionListener(e -> showRegisterUserDialog());
         add(panel);
+        add(panel, BorderLayout.CENTER);
     }
 
     private void openChartPage() {
@@ -162,10 +169,29 @@ public class SatelliteInterface extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 refreshResponseArea(responseArea);
+                updateActiveThreadLabel(); 
             }
         });
 
         autoRefreshTimer.start();
+
+        JPanel panel = new JPanel(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
+
+        JLabel titleLabel = new JLabel("Main Interface");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        panel.add(titleLabel, gbc);
+
+        activeThreadLabel = new JLabel("Active Threads: " + threadCounter.getActiveThreadCount());
+        gbc.gridy++;
+        panel.add(activeThreadLabel, gbc);
+
+        // Inicie a threadCounter
+        startThreadCounter();
 
         toggleAutoSendButton = new JButton("Start Auto Send");
         toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
@@ -183,6 +209,7 @@ public class SatelliteInterface extends JFrame {
         buttonPanel.add(cleanButton);
         buttonPanel.add(satelliteButton);
         add(buttonPanel, BorderLayout.SOUTH);
+        add(panel, BorderLayout.EAST);
 
         Middleware middleware = kernel.getMiddleware();
 
@@ -247,6 +274,14 @@ public class SatelliteInterface extends JFrame {
         });
     }
 
+    private void updateActiveThreadLabel() {
+        activeThreadLabel.setText("Active Threads: " + threadCounter.getActiveThreadCount());
+    }
+
+    private void startThreadCounter() {
+        threadCounter.start();
+    }
+
     private void cleanLogMessagesFile() {
         try (PrintWriter writer = new PrintWriter("log_messages.txt")) {
             writer.print(""); // Limpa o conteúdo do arquivo
@@ -289,7 +324,7 @@ public class SatelliteInterface extends JFrame {
     private void startAutoSendMessageThread() {
         if (autoMessageThread == null) {
             Middleware middleware = kernel.getMiddleware();
-            autoMessageThread = new AutomaticMessage(middleware);
+            autoMessageThread = new AutomaticMessage(middleware, threadCounter);
             autoMessageThread.start();
         }
     }

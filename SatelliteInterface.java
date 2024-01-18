@@ -107,10 +107,19 @@ public class SatelliteInterface extends JFrame {
         JButton refreshButton = new JButton("Refresh");
         satellitePanel.add(refreshButton, BorderLayout.SOUTH);
 
+        
         refreshButton.addActionListener(e -> refreshSatelliteText(satelliteTextArea));
 
-        // Adicione esta linha para exibir as mensagens automaticamente ao abrir a
-        // página Satellite
+      
+        Timer autoRefreshTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshSatelliteText(satelliteTextArea);
+            }
+        });
+        autoRefreshTimer.start();
+
+       
         refreshSatelliteText(satelliteTextArea);
 
         satelliteFrame.getContentPane().add(satellitePanel);
@@ -118,10 +127,22 @@ public class SatelliteInterface extends JFrame {
     }
 
     private void refreshSatelliteText(JTextArea satelliteTextArea) {
-        satelliteTextArea.setText("");
-        satelliteTextArea.append("Mensagens Enviadas para o Satélite:\n");
+        try (BufferedReader br = new BufferedReader(new FileReader("log_messages.txt"))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
 
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+
+            satelliteTextArea.setText(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            satelliteTextArea.setText("Erro ao ler o arquivo de log.");
+        }
     }
+
+   
 
     private void performLogin(String username, String password) {
         if (userManager.authenticateUser(username, password)) {
@@ -169,11 +190,14 @@ public class SatelliteInterface extends JFrame {
                     JOptionPane.showMessageDialog(null, "Por favor, pare o envio automático antes de bombardear mensagens.");
                     return;
                 }
-
-                Bomber bombardeador = new Bomber(new Middleware(messageQueue));
+        
+                Middleware middleware = kernel.getMiddleware(); 
+        
+                Bomber bombardeador = new Bomber(middleware);
                 bombardeador.iniciarBombardeio();
             }
         });
+        
 
         sendButton.addActionListener(new ActionListener() {
             @Override
@@ -216,7 +240,8 @@ public class SatelliteInterface extends JFrame {
 
     private void startAutoSendMessageThread() {
         if (autoMessageThread == null) {
-            autoMessageThread = new AutomaticMessage(messageQueue);
+            Middleware middleware = kernel.getMiddleware();
+            autoMessageThread = new AutomaticMessage(middleware);
             autoMessageThread.start();
         }
     }

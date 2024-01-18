@@ -21,7 +21,7 @@ public class Bomber {
                     String message = "Mensagem da Thread " + Thread.currentThread().getId() + ": " + j;
                     System.out.println("Enviando mensagem: " + message);
                     middleware.messageManager(message);
-                    Thread.sleep(100); // Simula um intervalo entre mensagens
+                    Thread.sleep(3000); // Simula um intervalo entre mensagens
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

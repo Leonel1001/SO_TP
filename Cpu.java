@@ -28,9 +28,8 @@ public class Cpu extends Thread {
             }
         }
     }
-
+    
     private void processMessage(String message) {
-        // Realiza o processamento da mensagem
         System.out.println("CPU processando mensagem: " + message);
         mem.saveMessage(message);
         responseMessage(message);

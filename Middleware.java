@@ -7,8 +7,6 @@ public class Middleware extends Thread {
         this.messageQueue = messageQueue;
     }
 
-
-
     public void messageManager (String message){
         messageQueue.add(message);
     };

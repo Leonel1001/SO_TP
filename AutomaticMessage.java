@@ -1,31 +1,26 @@
-import java.util.concurrent.LinkedBlockingQueue;
-
 public class AutomaticMessage extends Thread {
-    private final LinkedBlockingQueue<String> messageQueue;
+    private final Middleware middleware;
 
-    public AutomaticMessage(LinkedBlockingQueue<String> messageQueue) {
-        this.messageQueue = messageQueue;
+    public AutomaticMessage(Middleware middleware) {
+        this.middleware = middleware;
     }
 
-   
     @Override
     public void run() {
         while (!Thread.interrupted()) {
             try {
                 String automaticMessage = generateAutomaticMessage();
-                messageQueue.put(automaticMessage);
+                middleware.messageManager(automaticMessage);
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt(); 
+                Thread.currentThread().interrupt();
             }
         }
     }
-    
 
     public static String generateAutomaticMessage() {
         String automaticMessage = "Mensagem automática: " + System.currentTimeMillis();
         System.out.println("Gerando mensagem automática: " + automaticMessage);
         return automaticMessage;
     }
-    
 }

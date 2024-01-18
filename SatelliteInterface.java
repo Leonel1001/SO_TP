@@ -4,24 +4,27 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.concurrent.LinkedBlockingQueue;
+
 
 public class SatelliteInterface extends JFrame {
     private final Kernel kernel;
-   
     private final UserManager userManager;
     private String loggedInUser;
     private JButton toggleAutoSendButton;
     private volatile boolean autoSendMessages;
-    private Thread autoSendMessageThread;
-
+    private AutomaticMessage autoMessageThread;
+    public LinkedBlockingQueue<String> messageQueue;
+ 
 
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
-    
         this.userManager = userManager;
         this.loggedInUser = null;
         this.autoSendMessages = false;
+        this.messageQueue = new LinkedBlockingQueue<>(); 
         initComponents();
+    
     }
 
     private void initComponents() {
@@ -118,50 +121,6 @@ public class SatelliteInterface extends JFrame {
         satelliteTextArea.setText("");
         satelliteTextArea.append("Mensagens Enviadas para o Satélite:\n");
 
-        for (LogMessage message : MemoryUnit.getLogMessages()) {
-            satelliteTextArea.append(message.getMessage() + "\n");
-        }
-    }
-
-    private void toggleAutoSendMessage() {
-        autoSendMessages = !autoSendMessages;
-
-        if (autoSendMessages) {
-            startAutoSendMessageThread();
-            toggleAutoSendButton.setBackground(Color.green);
-        } else {
-            stopAutoSendMessageThread();
-            toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
-        }
-
-        toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
-    }
-
-    private void startAutoSendMessageThread() {
-        autoSendMessageThread = new Thread(() -> {
-            while (autoSendMessages) {
-                try {
-                    Thread.sleep(2000);
-                    String automaticMessage = "Automatic message from " + loggedInUser + ": "
-                            + System.currentTimeMillis();
-                    LogMessage logMessage = new LogMessage(automaticMessage, kernel.getMiddleware());
-                    kernel.getMiddleware().sendMessage(logMessage);
-                    MemoryUnit.addLogMessage(logMessage);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        autoSendMessageThread.start();
-    }
-
-    private void stopAutoSendMessageThread() {
-        if (autoSendMessageThread != null) {
-            autoSendMessageThread.interrupt();
-            autoSendMessageThread = null;
-        }
     }
 
     private void performLogin(String username, String password) {
@@ -181,10 +140,9 @@ public class SatelliteInterface extends JFrame {
         JTextArea responseArea = new JTextArea();
         JButton sendButton = new JButton("Send");
 
-        toggleAutoSendButton = new JButton("Start/Stop Auto Send");
+        toggleAutoSendButton = new JButton("Start Auto Send");
         toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
-        JButton satelliteButton = new JButton("Satellite"); // Adicionado aqui
-
+        JButton satelliteButton = new JButton("Satellite");
         JPanel inputPanel = new JPanel();
         inputPanel.setLayout(new BorderLayout());
         inputPanel.add(messageField, BorderLayout.CENTER);
@@ -196,23 +154,35 @@ public class SatelliteInterface extends JFrame {
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(toggleAutoSendButton);
 
-        buttonPanel.add(satelliteButton); // Adicionado aqui
+        buttonPanel.add(satelliteButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        Cpu cpu = kernel.getCpu();
         Middleware middleware = kernel.getMiddleware();
-        cpu.setMiddleware(middleware);
+
+        JButton bombardearButton = new JButton("Bombardear Mensagens");
+        buttonPanel.add(bombardearButton);
+
+        bombardearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (autoSendMessages) {
+                    JOptionPane.showMessageDialog(null, "Por favor, pare o envio automático antes de bombardear mensagens.");
+                    return;
+                }
+
+                Bomber bombardeador = new Bomber(new Middleware(messageQueue));
+                bombardeador.iniciarBombardeio();
+            }
+        });
 
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (loggedInUser != null) {
-                    String message = "Message from  " + loggedInUser + ": " + messageField.getText();
-                    LogMessage logMessage = new LogMessage(message, kernel.getMiddleware());
-                    kernel.getMiddleware().sendMessage(logMessage);
+                    String message = messageField.getText();
+                    middleware.messageManager(message);
                     messageField.setText("");
                     responseArea.append(message + "\n");
-                    MemoryUnit.addLogMessage(logMessage);
                 } else {
                     JOptionPane.showMessageDialog(null, "To send a message you need to be logged in.");
                 }
@@ -225,9 +195,37 @@ public class SatelliteInterface extends JFrame {
                 toggleAutoSendMessage();
             }
         });
+        satelliteButton.addActionListener(e -> showSatellitePage());
+    }
+
+    
+
+    private void toggleAutoSendMessage() {
+        autoSendMessages = !autoSendMessages;
+
+        if (autoSendMessages) {
+            startAutoSendMessageThread();
+            toggleAutoSendButton.setBackground(Color.green);
+        } else {
+            stopAutoSendMessageThread();
+            toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
+        }
 
         toggleAutoSendButton.setText(autoSendMessages ? "Stop Auto Send" : "Start Auto Send");
-        satelliteButton.addActionListener(e -> showSatellitePage()); // Adicionado aqui
+    }
+
+    private void startAutoSendMessageThread() {
+        if (autoMessageThread == null) {
+            autoMessageThread = new AutomaticMessage(messageQueue);
+            autoMessageThread.start();
+        }
+    }
+
+    private void stopAutoSendMessageThread() {
+        if (autoMessageThread != null) {
+            autoMessageThread.interrupt();
+            autoMessageThread = null;
+        }
     }
 
     private void showRegisterUserDialog() {
@@ -269,7 +267,7 @@ public class SatelliteInterface extends JFrame {
 
             SwingUtilities.invokeLater(() -> {
                 try {
-                
+
                     LogWindow logWindow = new LogWindow();
                     UserManager userManager = new UserManager();
                     SatelliteInterface interfaceFrame = new SatelliteInterface(logWindow, userManager);

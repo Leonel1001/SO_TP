@@ -1,58 +1,38 @@
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
-    private Middleware middleware;
-    private String lastResponse = "";
+    private final LinkedBlockingQueue<String> messageQueue;
 
-    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
+    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware, LinkedBlockingQueue<String> messageQueue) {
         this.kernel = kernel;
         this.mem = mem;
-        this.middleware = middleware;
+        this.messageQueue = messageQueue;
     }
 
-    // Método para configurar o Middleware
-    public void setMiddleware(Middleware middleware) {
-        // Sincroniza o acesso ao middleware ao configurá-lo
-        synchronized (this) {
-            this.middleware = middleware;
-        }
+    public void responseMessage(String message) {
+        String response = "Satélite responde a " + message;
+        System.out.println(response);
+        mem.saveMessage(response);
     }
-
-    public void sendResponse(String responseMessage) {
-        LogMessage response = new LogMessage(responseMessage, this);
-
-        // Synchronize access to the middleware when sending the response
-        synchronized (middleware) {
-            middleware.sendResponse(response);
-        }
-
-        // Adicionar a mensagem de resposta ao log
-        MemoryUnit.addLogMessage(response);
-    }
-
-    
 
     @Override
     public void run() {
         while (kernel.isRunning()) {
-            // Lógica de gestão, escalonamento e execução de tarefas
-            synchronized (mem) {
-                
-                synchronized (middleware) {
-                    LogMessage response = middleware.checkForResponse();
-                    if (response != null && !response.getMessage().equals(lastResponse)) {
-                        System.out.println("Received response: " + response.getMessage());
-
-                        // Enviar resposta à mensagem recebida
-                        sendResponse("Mensagem Recebida no Satelite!");
-
-                        // Update the lastResponse to the current response message
-                        lastResponse = response.getMessage();
-                    }
-                }
-
+            try {
+                String message = messageQueue.take();
+                processMessage(message);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
 
+    private void processMessage(String message) {
+        // Realiza o processamento da mensagem
+        System.out.println("CPU processando mensagem: " + message);
+        mem.saveMessage(message);
+        responseMessage(message);
+    }
 }

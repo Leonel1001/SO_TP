@@ -1,37 +1,31 @@
-public class AutomaticMessage {
+import java.util.concurrent.LinkedBlockingQueue;
 
-    public static void main(String[] args) {
-        Kernel kernel = new Kernel();
-        MemoryUnit mem = new MemoryUnit();
-        Middleware middleware = new Middleware();
-        
+public class AutomaticMessage extends Thread {
+    private final LinkedBlockingQueue<String> messageQueue;
 
-        Cpu cpu = new Cpu(kernel, mem, middleware);
-
-        // Iniciar o Middleware e a CPU
-        middleware.start();
-        cpu.start();
-
-        // Enviar mensagens automaticamente em intervalos regulares
-        Runnable automaticMessageSender = () -> {
-            while (true) {
-                try {
-                    Thread.sleep(2000); // Aguardar 2 segundos (intervalo arbitrário)
-
-                    // Criar uma mensagem automaticamente
-                    String automaticMessage = "Mensagem automática gerada em " + System.currentTimeMillis();
-                    LogMessage logMessage = new LogMessage(automaticMessage, null);
-
-                    // Enviar a mensagem para o Middleware
-                    middleware.sendMessage(logMessage);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        // Iniciar a thread para enviar mensagens automaticamente
-        new Thread(automaticMessageSender).start();
+    public AutomaticMessage(LinkedBlockingQueue<String> messageQueue) {
+        this.messageQueue = messageQueue;
     }
+
+   
+    @Override
+    public void run() {
+        while (!Thread.interrupted()) {
+            try {
+                String automaticMessage = generateAutomaticMessage();
+                messageQueue.put(automaticMessage);
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt(); 
+            }
+        }
+    }
+    
+
+    public static String generateAutomaticMessage() {
+        String automaticMessage = "Mensagem automática: " + System.currentTimeMillis();
+        System.out.println("Gerando mensagem automática: " + automaticMessage);
+        return automaticMessage;
+    }
+    
 }

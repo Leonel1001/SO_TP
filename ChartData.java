@@ -1,56 +1,72 @@
-
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Map;
 
 public class ChartData extends JFrame {
 
-    public ChartData(String title) {
+    private DefaultCategoryDataset dataset;
+    private MemoryUnit memoryUnit;
+
+    public ChartData(String title, MemoryUnit memoryUnit) {
         super(title);
 
-        // Cria o conjunto de dados
-        CategoryDataset dataset = createDataset();
+        // Initialize MemoryUnit
+        this.memoryUnit = memoryUnit;
 
-        // Cria o gráfico de barras
+        // Create the dataset
+        dataset = createDataset();
+
+        // Create the bar chart
         JFreeChart chart = ChartFactory.createBarChart(
-                "Exemplo de Gráfico de Barras",
-                "Categorias",
-                "Valores",
+                "Número de Mensagens por Utilizador",
+                "Utilizador",
+                "Número de Mensagens",
                 dataset,
                 PlotOrientation.VERTICAL,
                 true, true, false);
 
-        // Adiciona o gráfico de barras a um painel
+        // Add the bar chart to a panel
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new Dimension(560, 370));
         setContentPane(chartPanel);
+
+        // Set up the window
+        setSize(800, 600);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setVisible(true);
     }
 
-    private CategoryDataset createDataset() {
+    private DefaultCategoryDataset createDataset() {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
-        // Adiciona dados ao conjunto de dados
-        dataset.addValue(5, "Série 1", "Categoria 1");
-        dataset.addValue(8, "Série 1", "Categoria 2");
-        dataset.addValue(3, "Série 1", "Categoria 3");
-        dataset.addValue(12, "Série 1", "Categoria 4");
+        // Retrieve user message counts from MemoryUnit
+        Map<String, Integer> userMessageCounts = memoryUnit.getUserMessageCounts();
+
+        // Add data to the dataset
+        for (Map.Entry<String, Integer> entry : userMessageCounts.entrySet()) {
+            dataset.addValue(entry.getValue(), "Série 1", entry.getKey());
+        }
 
         return dataset;
     }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            ChartData example = new ChartData("Exemplo de Gráfico de Barras");
-            example.setSize(800, 600);
-            example.setLocationRelativeTo(null);
-            example.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-            example.setVisible(true);
+            MemoryUnit memoryUnit = new MemoryUnit();
+            // Assuming users send messages, update the memory unit with user and message
+            memoryUnit.saveMessage("User1: Hello!");
+            memoryUnit.saveMessage("User2: Hi there!");
+            memoryUnit.saveMessage("User1: Another message from User1!");
+
+            // Open the chart page
+            new ChartData("Número de Mensagens por Utilizador", memoryUnit);
         });
     }
 }

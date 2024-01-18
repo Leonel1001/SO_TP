@@ -15,6 +15,7 @@ public class SatelliteInterface extends JFrame {
     private volatile boolean autoSendMessages;
     private AutomaticMessage autoMessageThread;
     public LinkedBlockingQueue<String> messageQueue;
+    private MemoryUnit memoryUnit;
 
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
@@ -22,6 +23,7 @@ public class SatelliteInterface extends JFrame {
         this.loggedInUser = null;
         this.autoSendMessages = false;
         this.messageQueue = new LinkedBlockingQueue<>();
+        this.memoryUnit = new MemoryUnit();
         initComponents();
 
     }
@@ -83,7 +85,7 @@ public class SatelliteInterface extends JFrame {
     }
 
     private void openChartPage() {
-        ChartData chartExample = new ChartData("Exemplo de Gráfico de Barras");
+        ChartData chartExample = new ChartData("Exemplo de Gráfico de Barras", memoryUnit);
         chartExample.setSize(800, 600);
         chartExample.setLocationRelativeTo(null);
         chartExample.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

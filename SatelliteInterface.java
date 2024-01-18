@@ -6,6 +6,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
+
 public class SatelliteInterface extends JFrame {
     private final Kernel kernel;
     private final UserManager userManager;
@@ -30,6 +31,7 @@ public class SatelliteInterface extends JFrame {
         setTitle("Satellite Interface");
         setSize(600, 400);
         setLocationRelativeTo(null);
+
 
         showInitialPage();
     }
@@ -73,20 +75,19 @@ public class SatelliteInterface extends JFrame {
         gbc.gridx++;
         panel.add(registerButton, gbc);
 
-        JButton satelliteButton = new JButton("Satellite");
-        gbc.gridy++;
-        panel.add(satelliteButton, gbc);
-
-        satelliteButton.addActionListener(e -> showSatellitePage());
-
-        satelliteButton.addActionListener(e -> showSatellitePage());
-
         loginButton
                 .addActionListener(e -> performLogin(usernameField.getText(), new String(passwordField.getPassword())));
 
         registerButton.addActionListener(e -> showRegisterUserDialog());
-
         add(panel);
+    }
+
+    private void openChartPage() {
+        ChartData chartExample = new ChartData("Exemplo de Gráfico de Barras");
+        chartExample.setSize(800, 600);
+        chartExample.setLocationRelativeTo(null);
+        chartExample.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        chartExample.setVisible(true);
     }
 
     private void showSatellitePage() {
@@ -208,15 +209,15 @@ public class SatelliteInterface extends JFrame {
                 bombardeador.iniciarBombardeio();
             }
         });
-
         sendButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (loggedInUser != null) {
-                    String message = messageField.getText();
-                    middleware.messageManager(message);
+                    String messageContent = messageField.getText();
+                    String fullMessage = "Mensagem de " + loggedInUser + ": " + messageContent;
+                    middleware.messageManager(fullMessage);
                     messageField.setText("");
-                    responseArea.append(message + "\n");
+                    responseArea.append(loggedInUser + ": " + messageContent + "\n");
                 } else {
                     JOptionPane.showMessageDialog(null, "To send a message you need to be logged in.");
                 }
@@ -230,6 +231,18 @@ public class SatelliteInterface extends JFrame {
             }
         });
         satelliteButton.addActionListener(e -> showSatellitePage());
+
+        satelliteButton.addActionListener(e -> showSatellitePage());
+
+        JButton openChartButton = new JButton("Open Chart Page");
+        buttonPanel.add(openChartButton);
+
+        openChartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                openChartPage();
+            }
+        });
     }
 
     private void cleanLogMessagesFile() {

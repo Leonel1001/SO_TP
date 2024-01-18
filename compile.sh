@@ -1,14 +1,8 @@
 #!/bin/bash
 
-# Diretório de saída para os arquivos .class
-output_directory="SatelliteClass"
+# Compilação dos arquivos .java e colocação no diretório de saída com o JAR do JFreeChart no classpath
+javac -cp ./lib/jfreechart.jar -d ./SatelliteClass *.java
 
-# Certifique-se de que o diretório de saída exista
-mkdir -p "$output_directory"
+# Execução da classe SatelliteInterface com o JAR do JFreeChart no classpath
+java -cp .:./lib/jfreechart.jar:./SatelliteClass SatelliteInterface
 
-# Compilação dos arquivos .java e colocação no diretório de saída
-javac -d "$output_directory" *.java
-
-# Execução da classe SatelliteInterface
-java -cp "$output_directory" SatelliteInterface
--

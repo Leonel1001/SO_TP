@@ -1,4 +1,4 @@
 Manifest-Version: 1.0
-Class-Path: . lib/jfreechart.jar;./lib/gson.jar;./lib/jBCrypt.jar
+Class-Path: . lib/jfreechart.jar /lib/gson.jar /lib/jBCrypt.jar
 Main-Class: SatelliteInterface 
 

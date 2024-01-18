@@ -1,37 +1,56 @@
-public class AutomaticMessage {
+import java.util.concurrent.atomic.AtomicInteger;
 
-    public static void main(String[] args) {
-        Kernel kernel = new Kernel();
-        MemoryUnit mem = new MemoryUnit();
-        Middleware middleware = new Middleware();
-        
+public class AutomaticMessage extends Thread {
+    private final Middleware middleware;
+    private final AtomicInteger activeThreadCount;
+    private volatile boolean isActive;
 
-        Cpu cpu = new Cpu(kernel, mem, middleware);
+    // Construtor que recebe uma instância de Middleware e um contador de threads
+    public AutomaticMessage(Middleware middleware, ThreadCounter threadCounter) {
+        this.middleware = middleware;
+        this.activeThreadCount = threadCounter.activeThreadCount;
+        this.isActive = true;
+    }
 
-        // Iniciar o Middleware e a CPU
-        middleware.start();
-        cpu.start();
+    public void stopThread() {
+        isActive = false;
+        interrupt();
+    }
 
-        // Enviar mensagens automaticamente em intervalos regulares
-        Runnable automaticMessageSender = () -> {
-            while (true) {
-                try {
-                    Thread.sleep(2000); // Aguardar 2 segundos (intervalo arbitrário)
+    // Método que representa a execução da thread
+    @Override
+    public void run() {
+        try {
 
-                    // Criar uma mensagem automaticamente
-                    String automaticMessage = "Mensagem automática gerada em " + System.currentTimeMillis();
-                    LogMessage logMessage = new LogMessage(automaticMessage, null);
+            while (isActive && !Thread.interrupted()) {
 
-                    // Enviar a mensagem para o Middleware
-                    middleware.sendMessage(logMessage);
+                String automaticMessage = generateAutomaticMessage();
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                middleware.messageManager(automaticMessage);
+
+                Thread.sleep(3000);
+
+                activeThreadCount.incrementAndGet();
             }
-        };
+        } catch (InterruptedException e) {
 
-        // Iniciar a thread para enviar mensagens automaticamente
-        new Thread(automaticMessageSender).start();
+            Thread.currentThread().interrupt();
+        } finally {
+
+            activeThreadCount.decrementAndGet();
+        }
+    }
+
+    // Método synchronized para obter o número de threads ativas
+    public synchronized int getActiveThreadCount() {
+        return activeThreadCount.get();
+    }
+
+    // Método estático para gerar uma mensagem automática
+    public static String generateAutomaticMessage() {
+
+        String automaticMessage = "Mensagem automática: " + System.currentTimeMillis();
+        System.out.println("Gerando mensagem automática: " + automaticMessage);
+        return automaticMessage;
     }
 }

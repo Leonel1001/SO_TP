@@ -1,57 +1,83 @@
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Cpu extends Thread {
     private final Kernel kernel;
     private final MemoryUnit mem;
-    private Middleware middleware;
-    private String lastResponse = ""; 
-    
+    private final LinkedBlockingQueue<String> messageQueue;
+    private final Semaphore semaphore;
+    private final AtomicInteger activeThreadCount;
 
-    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware) {
+    public Cpu(Kernel kernel, MemoryUnit mem, Middleware middleware, LinkedBlockingQueue<String> messageQueue) {
         this.kernel = kernel;
         this.mem = mem;
-        this.middleware = middleware;
+        this.messageQueue = messageQueue;
+        this.semaphore = new Semaphore(1);
+        this.activeThreadCount = new AtomicInteger(0);
     }
 
+    // Método para responder a uma mensagem recebida.
+    public void responseMessage(String message) {
+        String response = "Satélite responde a " + message;
+        System.out.println(response);
+        mem.saveMessage(response);
+    }
+
+    // Sobrescreve o método run() da classe Thread para especificar o comportamento
+    // da CPU.
     @Override
     public void run() {
+        incrementActiveThreadCount();
+        // Executa enquanto o kernel estiver em execução.
         while (kernel.isRunning()) {
-            // Lógica de gestão, escalonamento e execução de tarefas
-            synchronized (mem) {
-                // int data = mem.readData();
-                // Processamento em tempo real
-                // ...
-
-                // Verifica se há resposta do Middleware
-                synchronized (middleware) {
-                    LogMessage response = middleware.checkForResponse();
-                    if (response != null && !response.getMessage().equals(lastResponse)) {
-                        System.out.println(response.getMessage());
-
-                        // Enviar resposta à mensagem recebida
-                        sendResponse("Mensagem Recebida no Satelite!");
-
-                        // Update the lastResponse to the current response message
-                        lastResponse = response.getMessage();
-                    
-                    }
-                }
+            try {
+                String message = messageQueue.take();
+                processMessage(message);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
+
+        decrementActiveThreadCount();
     }
 
-    // Método para configurar o Middleware
-    public void setMiddleware(Middleware middleware) {
-        // Sincroniza o acesso ao middleware ao configurá-lo
-        synchronized (this) {
-            this.middleware = middleware;
+    // Método privado para processar uma mensagem.
+    private synchronized void processMessage(String message) {
+        try {
+            semaphore.acquire();
+
+            System.out.println("CPU processando mensagem: " + message);
+            waitForCpuResponse();
+            mem.saveMessage(message);
+            responseMessage(message);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            semaphore.release();
         }
     }
 
-    public void sendResponse(String responseMessage) {
-        LogMessage response = new LogMessage(responseMessage, this);
-
-        // Synchronize access to the middleware when sending the response
-        synchronized (middleware) {
-            middleware.sendResponse(response);
-        }
+    // Método para obter o número atual de threads ativas.
+    public synchronized int getActiveThreadCount() {
+        return activeThreadCount.get();
     }
+
+    // Métodos para incrementar e decrementar o contador de threads ativas, de forma
+    // segura.
+    private synchronized void incrementActiveThreadCount() {
+        activeThreadCount.incrementAndGet();
+    }
+
+    private synchronized void decrementActiveThreadCount() {
+        activeThreadCount.decrementAndGet();
+    }
+
+    // Método simulado de espera da CPU antes de responder.
+    String waitForCpuResponse() {
+
+        return "Ok! Recebido!";
+    }
+
 }

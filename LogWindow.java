@@ -1,21 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class LogWindow extends JFrame {
     private JTextArea logTextArea;
-    List<LogMessage> logMessages;
-    
 
     public LogWindow() {
         setTitle("Logs");
         setSize(400, 300);
         setLocationRelativeTo(null);
-
-        logMessages = new ArrayList<>();
-        loadLogMessages(); // Carrega as mensagens salvas
 
         logTextArea = new JTextArea();
         logTextArea.setEditable(false);
@@ -26,44 +21,19 @@ public class LogWindow extends JFrame {
         updateLogTextArea();
     }
 
-    public List<LogMessage> getLogMessages() {
-        return logMessages;
-    }
-
-    public void addLogMessage(LogMessage logMessage) {
-        logMessages.add(logMessage);
-        updateLogTextArea();
-        saveLogMessages();
-    }
-
-    private void updateLogTextArea() {
-        StringBuilder sb = new StringBuilder();
-        for (LogMessage logMessage : logMessages) {
-            sb.append(logMessage.getMessage()).append("\n");
-        }
-        logTextArea.setText(sb.toString());
-    }
-
-    private void loadLogMessages() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("log_messages.txt"))) {
+    public void updateLogTextArea() {
+        try (BufferedReader br = new BufferedReader(new FileReader("log_messages.txt"))) {
+            StringBuilder sb = new StringBuilder();
             String line;
-            while ((line = reader.readLine()) != null) {
-                LogMessage logMessage = new LogMessage(line, null); // Considerando que o source pode ser nulo
-                logMessages.add(logMessage);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
-    private void saveLogMessages() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("log_messages.txt"))) {
-            for (LogMessage logMessage : logMessages) {
-                writer.write(logMessage.getMessage());
-                writer.newLine();
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
             }
+
+            logTextArea.setText(sb.toString());
         } catch (IOException e) {
             e.printStackTrace();
+            logTextArea.setText("Erro ao ler o arquivo de log.");
         }
     }
 
@@ -71,10 +41,6 @@ public class LogWindow extends JFrame {
         SwingUtilities.invokeLater(() -> {
             LogWindow logWindow = new LogWindow();
             logWindow.setVisible(true);
-
-            // Exemplo de adição de mensagens
-            logWindow.addLogMessage(new LogMessage("Mensagem de log 1", null));
-            logWindow.addLogMessage(new LogMessage("Mensagem de log 2", null));
         });
     }
 }

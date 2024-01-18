@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MemoryUnit {
-
+    // Caminho do arquivo de log para armazenar mensagens.
     private static final String LOG_FILE_PATH = "log_messages.txt";
 
     public MemoryUnit() {
     }
 
+    // Método para guardar uma mensagem no arquivo de log.
     public void saveMessage(String message) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(LOG_FILE_PATH, true))) {
             writer.write(message + "\n");
@@ -21,6 +22,7 @@ public class MemoryUnit {
         }
     }
 
+    // Método para obter contagens de mensagens por utilizador.
     public Map<String, Integer> getUserMessageCounts() {
         Map<String, Integer> userMessageCounts = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(LOG_FILE_PATH))) {
@@ -37,6 +39,7 @@ public class MemoryUnit {
         return userMessageCounts;
     }
 
+    // Método para obter contagens de respostas do satélite por utilizador.
     public Map<String, Integer> getSatelliteResponseCounts() {
         Map<String, Integer> satelliteResponseCounts = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(LOG_FILE_PATH))) {
@@ -53,6 +56,7 @@ public class MemoryUnit {
         return satelliteResponseCounts;
     }
 
+    // Método privado para extrair o nome de utilizador a partir de uma mensagem.
     private String getUsernameFromMessage(String message) {
         int startIndex = message.indexOf("Mensagem de ") + "Mensagem de ".length();
         int endIndex = message.indexOf(":", startIndex);

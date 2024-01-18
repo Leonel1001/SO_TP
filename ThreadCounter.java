@@ -6,6 +6,8 @@ public class ThreadCounter extends Thread {
     private final Bomber bomber;
     private final AutomaticMessage automaticMessage;
 
+    // Construtor da classe ThreadCounter, que recebe instâncias das classes Cpu,
+    // Bomber e AutomaticMessage.
     public ThreadCounter(Cpu cpu, Bomber bomber, AutomaticMessage automaticMessage) {
         this.cpu = cpu;
         this.bomber = bomber;
@@ -15,6 +17,7 @@ public class ThreadCounter extends Thread {
 
     @Override
     public void run() {
+        // Loop infinito para ver continuamente o número de threads ativas.
         while (true) {
             int activeThreadCountCpu = (cpu != null) ? cpu.getActiveThreadCount() : 0;
             int activeThreadCountBomber = (bomber != null) ? bomber.getActiveThreadCount() : 0;
@@ -29,6 +32,7 @@ public class ThreadCounter extends Thread {
             }
         }
     }
+    // Método sincronizado para obter o número total de threads ativas.
 
     public synchronized int getActiveThreadCount() {
         return activeThreadCount.get();

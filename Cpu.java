@@ -17,15 +17,19 @@ public class Cpu extends Thread {
         this.activeThreadCount = new AtomicInteger(0);
     }
 
+    // Método para responder a uma mensagem recebida.
     public void responseMessage(String message) {
         String response = "Satélite responde a " + message;
         System.out.println(response);
         mem.saveMessage(response);
     }
+
+    // Sobrescreve o método run() da classe Thread para especificar o comportamento
+    // da CPU.
     @Override
     public void run() {
         incrementActiveThreadCount();
-
+        // Executa enquanto o kernel estiver em execução.
         while (kernel.isRunning()) {
             try {
                 String message = messageQueue.take();
@@ -38,6 +42,7 @@ public class Cpu extends Thread {
         decrementActiveThreadCount();
     }
 
+    // Método privado para processar uma mensagem.
     private synchronized void processMessage(String message) {
         try {
             semaphore.acquire();
@@ -54,10 +59,13 @@ public class Cpu extends Thread {
         }
     }
 
+    // Método para obter o número atual de threads ativas.
     public synchronized int getActiveThreadCount() {
         return activeThreadCount.get();
     }
 
+    // Métodos para incrementar e decrementar o contador de threads ativas, de forma
+    // segura.
     private synchronized void incrementActiveThreadCount() {
         activeThreadCount.incrementAndGet();
     }
@@ -66,9 +74,10 @@ public class Cpu extends Thread {
         activeThreadCount.decrementAndGet();
     }
 
+    // Método simulado de espera da CPU antes de responder.
     String waitForCpuResponse() {
-      
+
         return "Ok! Recebido!";
     }
-    
+
 }

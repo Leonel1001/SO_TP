@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+// A classe UserManager gerencia operações relacionadas aos utilizadores, como adição, autenticação e persistência em arquivo.
 public class UserManager {
     private static final String USER_FILE = "users.json";
     private List<User> userList;
@@ -15,8 +16,9 @@ public class UserManager {
         this.userList = loadUsers();
     }
 
+    // Método para adicionar um utilizador à lista de utilizadores.
     public void addUser(User user) {
-        // Criptografar a senha antes de adicionar ao usuário
+        // Criptografar a senha antes de adicionar ao utilizador
         String hashedPassword = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt());
         user.setPassword(hashedPassword);
 
@@ -25,6 +27,7 @@ public class UserManager {
         System.out.println("Utilizador criado com sucesso: " + user.getUsername());
     }
 
+    // Método para obter um usuário com base no nome de utilizadores.
     public User getUserByUsername(String username) {
         for (User user : userList) {
             if (user.getUsername().equals(username)) {
@@ -34,6 +37,7 @@ public class UserManager {
         return null;
     }
 
+    // Método para obter uma cópia da lista de utilizadores.
     public List<User> getUsers() {
         return new ArrayList<>(userList);
     }
@@ -41,11 +45,12 @@ public class UserManager {
     public boolean authenticateUser(String username, String password) {
         User user = getUserByUsername(username);
 
-        // Verificar se o usuário existe e comparar a senha fornecida com a senha
+        // Verificar se o utilizador existe e comparar a senha fornecida com a senha
         // criptografada armazenada
         return user != null && BCrypt.checkpw(password, user.getPassword());
     }
 
+    // Método privado para salvar a lista de utilizadores no arquivo.
     private void saveUsers() {
         try (Writer writer = new FileWriter(USER_FILE)) {
             Gson gson = new Gson();
@@ -55,6 +60,7 @@ public class UserManager {
         }
     }
 
+    // Método privado para carregar a lista de utilizadores do arquivo
     private List<User> loadUsers() {
         try (Reader reader = new FileReader(USER_FILE)) {
             Gson gson = new Gson();

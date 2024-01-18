@@ -54,3 +54,6 @@ Mensagem automática: 1705607646573
 Satélite responde a Mensagem automática: 1705607646573
 Mensagem automática: 1705607649580
 Satélite responde a Mensagem automática: 1705607649580
+User1: Hello!
+User2: Hi there!
+User1: Another message from User1!

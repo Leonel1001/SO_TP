@@ -17,8 +17,8 @@ public class Bomber {
         @Override
         public void run() {
             try {
-                for (int j = 0; j < 10; j++) {
-                    String message = "Mensagem da Thread " + Thread.currentThread().getId() + ": " + j;
+                for (int j = 0; j < 3; j++) {
+                    String message = "Mensagem da Thread " + Thread.currentThread().getId();
                     System.out.println("Enviando mensagem: " + message);
                     middleware.messageManager(message);
                     Thread.sleep(3000); // Simula um intervalo entre mensagens

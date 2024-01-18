@@ -6,7 +6,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.concurrent.LinkedBlockingQueue;
 
-
 public class SatelliteInterface extends JFrame {
     private final Kernel kernel;
     private final UserManager userManager;
@@ -15,16 +14,15 @@ public class SatelliteInterface extends JFrame {
     private volatile boolean autoSendMessages;
     private AutomaticMessage autoMessageThread;
     public LinkedBlockingQueue<String> messageQueue;
- 
 
     public SatelliteInterface(LogWindow logWindow, UserManager userManager) {
         this.kernel = new Kernel();
         this.userManager = userManager;
         this.loggedInUser = null;
         this.autoSendMessages = false;
-        this.messageQueue = new LinkedBlockingQueue<>(); 
+        this.messageQueue = new LinkedBlockingQueue<>();
         initComponents();
-    
+
     }
 
     private void initComponents() {
@@ -107,10 +105,8 @@ public class SatelliteInterface extends JFrame {
         JButton refreshButton = new JButton("Refresh");
         satellitePanel.add(refreshButton, BorderLayout.SOUTH);
 
-        
         refreshButton.addActionListener(e -> refreshSatelliteText(satelliteTextArea));
 
-      
         Timer autoRefreshTimer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -119,7 +115,6 @@ public class SatelliteInterface extends JFrame {
         });
         autoRefreshTimer.start();
 
-       
         refreshSatelliteText(satelliteTextArea);
 
         satelliteFrame.getContentPane().add(satellitePanel);
@@ -142,8 +137,6 @@ public class SatelliteInterface extends JFrame {
         }
     }
 
-   
-
     private void performLogin(String username, String password) {
         if (userManager.authenticateUser(username, password)) {
             loggedInUser = username;
@@ -160,6 +153,16 @@ public class SatelliteInterface extends JFrame {
         JTextField messageField = new JTextField();
         JTextArea responseArea = new JTextArea();
         JButton sendButton = new JButton("Send");
+        JButton cleanButton = new JButton("Clean");
+
+        Timer autoRefreshTimer = new Timer(100, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshResponseArea(responseArea);
+            }
+        });
+
+        autoRefreshTimer.start();
 
         toggleAutoSendButton = new JButton("Start Auto Send");
         toggleAutoSendButton.setBackground(UIManager.getColor("Button.background"));
@@ -174,7 +177,7 @@ public class SatelliteInterface extends JFrame {
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(toggleAutoSendButton);
-
+        buttonPanel.add(cleanButton);
         buttonPanel.add(satelliteButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
@@ -183,21 +186,28 @@ public class SatelliteInterface extends JFrame {
         JButton bombardearButton = new JButton("Bombardear Mensagens");
         buttonPanel.add(bombardearButton);
 
+        cleanButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                responseArea.setText("");
+                cleanLogMessagesFile();
+            }
+        });
         bombardearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (autoSendMessages) {
-                    JOptionPane.showMessageDialog(null, "Por favor, pare o envio automático antes de bombardear mensagens.");
+                    JOptionPane.showMessageDialog(null,
+                            "Por favor, pare o envio automático antes de bombardear mensagens.");
                     return;
                 }
-        
-                Middleware middleware = kernel.getMiddleware(); 
-        
+
+                Middleware middleware = kernel.getMiddleware();
+
                 Bomber bombardeador = new Bomber(middleware);
                 bombardeador.iniciarBombardeio();
             }
         });
-        
 
         sendButton.addActionListener(new ActionListener() {
             @Override
@@ -222,7 +232,30 @@ public class SatelliteInterface extends JFrame {
         satelliteButton.addActionListener(e -> showSatellitePage());
     }
 
-    
+    private void cleanLogMessagesFile() {
+        try (PrintWriter writer = new PrintWriter("log_messages.txt")) {
+            writer.print(""); // Limpa o conteúdo do arquivo
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            // Trate a exceção se o arquivo não puder ser encontrado
+        }
+    }
+
+    private void refreshResponseArea(JTextArea responseArea) {
+        try (BufferedReader br = new BufferedReader(new FileReader("log_messages.txt"))) {
+            StringBuilder sb = new StringBuilder();
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+            }
+
+            responseArea.setText(sb.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            responseArea.setText("Erro ao ler o arquivo de log.");
+        }
+    }
 
     private void toggleAutoSendMessage() {
         autoSendMessages = !autoSendMessages;

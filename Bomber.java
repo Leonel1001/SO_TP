@@ -10,10 +10,10 @@ public class Bomber {
     }
 
     public void iniciarBombardeio() {
-        // Criação de 5 threads para bombardear mensagens
+        
         for (int i = 0; i < 5; i++) {
             Thread thread = new Thread(new BombardeadorRunnable());
-            thread.start(); // Inicia cada thread
+            thread.start(); 
         }
     }
 

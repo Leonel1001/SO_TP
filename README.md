@@ -5,6 +5,8 @@ Selecionar o projeto a compilar através do terminal e após isso executar o seg
 
 javac -cp .\lib\jfreechart.jar;./lib/gson.jar;./lib/jBCrypt.jar; -d .\SatelliteClass -encoding UTF-8 *.java
 
+javac -cp ./lib/jfreechart.jar:./lib/gson.jar:./lib/jBCrypt.jar -d ./SatelliteClass -encoding UTF-8 *.java
+
 Após realizar o comando “Javac”, todos os ficheiros .class devem ficar criados com sucesso dentro da pasta com o seguinte nome “SatelliteClass”. Com isto feito fica com o programa pronto a executar e para isso deve utilizar o seguinte comando:
 
 No Windows:

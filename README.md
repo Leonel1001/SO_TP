@@ -13,7 +13,8 @@ No Windows:
 java -cp .;.\lib\jfreechart.jar;./lib/gson.jar;./lib/jBCrypt.jar;.\SatelliteClass SatelliteInterface
 
 No MacOS:
-java -cp .;.\lib\jfreechart.jar;./lib/gson.jar;./lib/jBCrypt.jar;.\SatelliteClass SatelliteInterface
+java -cp .:./lib/jfreechart.jar:./lib/gson.jar:./lib/jBCrypt.jar:./SatelliteClass SatelliteInterface
+
 
 Por fim, quando os dois comandos forem executados com sucesso, a aplicação irá aparecer no ecrã e está pronta a ser utilizada.
 
